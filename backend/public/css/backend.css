@@ -1,0 +1,64 @@
+
+button {
+    cursor: pointer !important;
+}
+
+.crud-form button {
+    position: relative;
+    top: -10px;
+}
+
+.toggle-on {
+    color: white !important;
+}
+
+.page-item.active .page-link {
+    background-color: #0c2646 !important;
+    border-color: #0c2646 !important;
+}
+
+.page-item.active .page-link:hover {
+    color: white;
+}
+
+.delete-form a {
+    color: #f96332 !important;
+    cursor: pointer;
+}
+
+.delete-form a:hover {
+    text-decoration: underline !important;
+}
+
+.new-question button, .question-item button {
+    position: relative !important; 
+    top: -12px !important;
+}
+
+.question-item {
+    border-top: dotted #0c2646 1px;
+    padding-top: 25px;
+}
+
+.question-item a {
+    color: #f96332 !important;
+    cursor: pointer;
+}
+
+.question-item a:hover {
+    text-decoration: none !important;
+}
+
+.visitors a {
+    color: #f96332 !important;
+    cursor: pointer;
+}
+
+#responses_modal table span {
+    color: #f96332 !important;
+}
+
+.datepicker {
+    background-color: white !important;
+    cursor: pointer !important;
+}
