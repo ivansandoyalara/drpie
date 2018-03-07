@@ -141,6 +141,8 @@ class BranchController extends Controller
                     ->where('status', '=', '1')
                     ->get();
 
-        return $branches;
+        return response()
+                ->json($branches)
+                ->header('Access-Control-Allow-Origin', '*');
     }
 }

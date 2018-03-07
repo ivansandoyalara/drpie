@@ -1,58 +1,27 @@
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-} from 'react-native';
+import React, { Component } from 'react'
+import BranchScreen from './src/screens/branch'
+import QuestionsScreen from './src/screens/questions'
+import { StackNavigator } from 'react-navigation'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const RootStack = StackNavigator({
+    Branch: {
+      screen: BranchScreen
+    },
+    Questions: {
+      screen: QuestionsScreen
+    }
+  },
+  {
+    initialRouteName: 'Branch',
+  }
+)
 
-type Props = {};
-export default class App extends Component<Props> {
+class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Button 
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn mroe about this purple button"
-        />
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
+      <RootStack />
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default App
