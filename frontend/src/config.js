@@ -1,8 +1,11 @@
+const host = `http://37985c59.ngrok.io`
+
 export const config = {
-    endpoint: 'http://1590393f.ngrok.io/api/',
+    host,
+    apiEndpoint: `${host}/api`,
 }
 
 export const apiDirectory = {
-    branches: `${config.endpoint}branches`,
-    //branches: `${endpoint}branches`,
+    branches: `${config.apiEndpoint}/branches`,
+    questions: `${config.apiEndpoint}/questions`,
 }

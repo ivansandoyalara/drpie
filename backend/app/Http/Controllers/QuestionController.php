@@ -130,6 +130,8 @@ class QuestionController extends Controller
                     ->select('id', 'question', 'type')
                     ->get();
 
-        return $questions;
+        return response()
+            ->json($questions)
+            ->header('Access-Control-Allow-Origin', '*');
     }
 }

@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //open API routes
 Route::get('branches', 'BranchController@indexAPI');
 Route::get('employees', 'EmployeeController@indexAPI');
-Route::get('form', 'QuestionController@indexAPI');
+Route::get('questions', 'QuestionController@indexAPI');
 Route::post('visitors', 'VisitorController@store');
