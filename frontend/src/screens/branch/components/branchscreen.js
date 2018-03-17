@@ -1,20 +1,32 @@
 import React from 'react'
 import ButtonDP from '../../../ui/buttondp'
-import PickerDP from '../../../ui/pickerdp'
 import {
     View,
     Text,
+    Picker,
 } from 'react-native'
 
 function BranchScreenLayout(props) {
     return (
         <View>
             <Text>Seleccionar punto de venta: </Text>
-            <PickerDP 
-                selectedPickerValue={props.selectedBranch}
-                onChangePicker={props.onChangePicker}
-                options={props.branches}
-            />
+
+            <Picker
+                onValueChange={props.onChangePicker}
+                selectedValue={props.selectedBranch}
+            >
+            {
+                props.branches.map((item) => {
+                    return (
+                        <Picker.Item
+                            key={item.id}
+                            value={item.id}
+                            label={item.name}
+                        />
+                    )
+                })
+            }
+            </Picker>
 
             <ButtonDP 
                 onPress={props.pressNextButton}

@@ -1,4 +1,4 @@
-const host = `http://37985c59.ngrok.io`
+const host = `http://af3d4af7.ngrok.io`
 
 export const config = {
     host,

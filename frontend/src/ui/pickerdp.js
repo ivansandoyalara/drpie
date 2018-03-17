@@ -1,26 +1,25 @@
 import React from 'react'
-import {
-    Picker,
-} from 'react-native'
+import { Picker } from 'react-native'
 
 function PickerDP(props) {
+    const { input, ...inputProps } = props
+
     return (
         <Picker
-            selectedValue={props.selectedPickerValue}
-            onValueChange={props.onChangePicker}
+            {...inputProps}
+            onValueChange={input.onChange}
+            onBlur={input.onBlur}
+            onFocus={input.onFocus}
+            selectedValue={input.value}
         >
+        <Picker.Item key={0} value={''} label={'- Seleccionar uno(a) -'}/>
             {
                 props.options.map((item) => {
-                    let label = ''
-                    if(item.name)
-                        label = item.name
-                    if(item.value)
-                        label = item.value
                     return (
                         <Picker.Item 
                             key={item.id}
                             value={item.id}
-                            label={label}
+                            label={item.value}
                         />
                     )
                 })

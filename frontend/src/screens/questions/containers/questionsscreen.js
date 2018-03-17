@@ -15,6 +15,7 @@ class QuestionsScreen extends Component {
         return (
             <VisitForm 
                 questions={this.props.questions}
+                onSubmit={values => console.log('VALUEEE: ', values)}
             />
         )
     }

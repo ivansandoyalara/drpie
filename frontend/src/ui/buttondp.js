@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-    Button,
-} from 'react-native'
+import { Button } from 'react-native'
 
 function ButtonDP(props) {
     return (
