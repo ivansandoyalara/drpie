@@ -1,4 +1,4 @@
-const host = `http://af3d4af7.ngrok.io`
+const host = `http://86d28861.ngrok.io`
 
 export const config = {
     host,
@@ -8,4 +8,5 @@ export const config = {
 export const apiDirectory = {
     branches: `${config.apiEndpoint}/branches`,
     questions: `${config.apiEndpoint}/questions`,
+    visitors: `${config.apiEndpoint}/visitors`
 }

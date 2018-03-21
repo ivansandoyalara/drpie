@@ -16,7 +16,7 @@ class CreateVisitorsFk extends Migration
         Schema::table('visitors', function (Blueprint $table) {
             $table->integer('branch_id')->unsigned();
             $table->foreign('branch_id')->references('id')->on('branches');
-            $table->integer('employee_id')->unsigned();
+            $table->integer('employee_id')->unsigned()->nullable();
             $table->foreign('employee_id')->references('id')->on('employees');
         });
     }

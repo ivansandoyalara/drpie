@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Visitor;
 use App\Branch;
+use App\Employee;
+use App\Question;
+use App\Response;
+use App\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 class VisitorController extends Controller
 {
@@ -113,23 +118,7 @@ class VisitorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'surname' => 'required',
-            'legal_id' => 'required',
-            'email' => 'required|email',
-        ]);
-
-        DB::transaction(function() use($request) {
-            Visitor::createOrUpdate([
-                'legal_id' => $request->legal_id
-            ], [
-                'name' => $request->name,
-                'surname' => $request->surname,
-                'legal_id' => $request->legal_id,
-                'email' => $request->email,
-            ]);
-        });
+        //
     }
 
     /**
@@ -177,5 +166,90 @@ class VisitorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function storeAPI(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'employee_code' => 'required',
+            'branch_id' => 'required',
+            'name' => 'required',
+            'surname' => 'required',
+            'legal_id' => 'required|min:10',
+            'email' => 'required|email',
+        ]);
+
+        if($validator->fails())
+        {
+            //return a response when validator fails
+            return response()
+                ->json(array('status' => 'STORE_VISITOR_FAIL'))
+                ->header('Access-Control-Allow-Origin', '*');
+        }
+
+        DB::transaction(function() use($request) {
+            //get employee
+            $employee = Employee::where('code', '=', $request->employee_code)->first();
+            $employee_id = null;
+            if(count($employee) > 0)
+                $employee_id = $employee->id;
+
+            //update or create visitor record
+            $visitor_item = Visitor::updateOrCreate([
+                'legal_id' => $request->legal_id
+            ], [
+                'name' => $request->name,
+                'surname' => $request->surname,
+                'legal_id' => $request->legal_id,
+                'email' => $request->email,
+                'branch_id' => $request->branch_id,
+                'employee_id' => $employee_id,
+            ]);
+
+            //get responses
+            $inputs = $request->all();
+            foreach($inputs as $key => $value)
+            {
+                if($value === false)
+                    continue;
+                //retrieve inputs starting with "q"
+                if(substr($key, 0, 1) == "q")
+                {
+                    $key = explode("_", $key);
+                    if(count($key) > 1)
+                    {
+                        $question_id = $key[1];
+                        //retrieve question record
+                        $question = Question::where('id', '=', $question_id)->first();
+                        if(count($question) > 0)
+                        {
+                            //valid question
+                            if($question->type == '1')
+                                //single option question
+                                $option_id = $value;
+                            if($question->type == '2')
+                                //multi options question
+                                $option_id = $key[2];
+
+                            //retrieve option record
+                            $option = Option::where('id', '=', $option_id)->first();
+                            $option_value = 'N/A';
+                            if(count($option) > 0)
+                                $option_value = $option->value;
+
+                            $response = new Response();
+                            $response->question = $question->question;
+                            $response->response = $option_value;
+                            $response->visitor_id = $visitor_item->id;
+                            $response->save();
+                        }
+                    }
+                }
+            }
+        });
+
+        return response()
+                ->json(array('status' => 'STORE_VISITOR_OK'))
+                ->header('Access-Control-Allow-Origin', '*');
     }
 }

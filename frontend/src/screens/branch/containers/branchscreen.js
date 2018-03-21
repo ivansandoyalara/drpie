@@ -38,6 +38,7 @@ class BranchScreen extends Component {
 
 function mapStateToProps(state, props) {
     //console.log(`El state (branch) es: ${JSON.stringify(state)}`)
+    console.log('En BRANCHES')
     return {
         branches: state.branches.items,
         selectedBranch: state.branches.selectedItem,

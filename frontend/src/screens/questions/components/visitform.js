@@ -1,5 +1,6 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
 import LabelDP from '../../../ui/labeldp'
 import InputDP from '../../../ui/inputdp'
 import PickerDP from '../../../ui/pickerdp'
@@ -14,6 +15,11 @@ import {
 function VisitForm(props) {
     return (
         <View>
+            <LabelDP label='Código vendedor'/>
+            <Field 
+                name={'employee_code'}
+                component={InputDP}
+            />
             <LabelDP label='Nombre'/>
             <Field 
                 name={'name'}
@@ -42,7 +48,7 @@ function VisitForm(props) {
                             {
                                 item.type == 1 &&
                                 <Field 
-                                    name={`q${item.id}`}
+                                    name={`q_${item.id}`}
                                     component={PickerDP}
                                     options={item.options}
                                 />
@@ -52,6 +58,13 @@ function VisitForm(props) {
                                 <CheckBoxGroupDP 
                                     groupName={`q_${item.id}`}
                                     options={item.options}
+                                />
+                            }
+                            {
+                                item.type == 3 &&
+                                <Field 
+                                    name={`q_${item.id}`}
+                                    component={InputDP}
                                 />
                             }
                         </View>
@@ -66,4 +79,48 @@ function VisitForm(props) {
     )
 }
 
-export default reduxForm({ form: 'visitForm' })(VisitForm);
+//form validation
+const validate = values => {
+    const errors = {}
+
+    if(!values.employee_code) {
+        errors.employee_code = 'Required'
+    }
+
+    if(!values.name) {
+        errors.name = 'Required'
+    }
+
+    if(!values.surname) {
+        errors.surname = 'Required'
+    }
+
+    if(!values.legal_id) {
+        errors.legal_id = 'Required'
+    } else if (values.legal_id.length < 10) {
+        errors.legal_id = 'Must be 10 characters or more'
+    }
+
+    if(!values.email) {
+        errors.email = 'Required'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address'
+    }
+
+    return errors
+}
+
+VisitForm = reduxForm({
+    form: 'visitForm',
+    validate,
+})(VisitForm)
+
+VisitForm = connect(
+    state => ({
+        initialValues: {
+            'branch_id': state.branches.selectedItem,
+        }
+    })
+)(VisitForm)
+
+export default VisitForm

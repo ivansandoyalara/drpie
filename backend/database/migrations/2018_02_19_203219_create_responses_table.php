@@ -17,9 +17,9 @@ class CreateResponsesTable extends Migration
             $table->increments('id');
             $table->text('question');
             $table->text('response');
-            $table->string('additional1');
-            $table->string('additional2');
-            $table->string('additional3');
+            $table->string('additional1')->nullable();
+            $table->string('additional2')->nullable();
+            $table->string('additional3')->nullable();
             $table->timestamps();
         });
     }

@@ -20,4 +20,13 @@ class Visitor extends Model
     {
         return $this->hasMany('App\Response');
     }
+
+    protected $fillable = [
+        'legal_id',
+        'name',
+        'surname',
+        'email',
+        'branch_id',
+        'employee_id',
+    ];
 }

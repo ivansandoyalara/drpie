@@ -1,17 +1,27 @@
 import React from 'react'
-import { TextInput } from 'react-native'
+import { 
+    TextInput,
+    View,
+    Text,
+} from 'react-native'
 
 function InputDP(props) {
-    const { input, ...inputProps } = props
+    const { input, meta, ...inputProps } = props
 
     return (
-        <TextInput
-            {...inputProps}
-            onChangeText={input.onChange}
-            onBlur={input.onBlur}
-            onFocus={input.onFocus}
-            value={input.value}
-        />
+        <View>
+            <TextInput
+                {...inputProps}
+                onChangeText={input.onChange}
+                onBlur={input.onBlur}
+                onFocus={input.onFocus}
+                value={input.value}
+            />
+            {
+                meta.touched && meta.error &&
+                <Text>{meta.error}</Text>
+            }
+        </View>
     )
 }
 
