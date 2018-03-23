@@ -4,31 +4,31 @@ import ConfirmationScreenLayout from '../components/confirmationscreen'
 
 class ConfirmationScreen extends Component {
     redirectToBranches = () => (
-        this.props.navigation.navigate('Branches')
+        this.props.navigation.navigate('Branch')
     )
 
     redirectToQuestions = () => (
         this.props.navigation.navigate('Questions')
     )
 
-    /*redirectToReport = () => (
-        this.props.navigation.navigate('Report')
-    )*/
+    redirectToReport = () => (
+        console.log('redirecting to report ...')
+        //this.props.navigation.navigate('Report')
+    )
 
     render() {
         return (
             <ConfirmationScreenLayout 
                 redirectToBranches={this.redirectToBranches}
                 redirectToQuestions={this.redirectToQuestions}
-                //redirectToReport={this.redirectToReport}
+                redirectToReport={this.redirectToReport}
             />
         )
     }
 }
 
 function mapStateToProps(state, props) {
-    //console.log(`El state (confirmation) es: ${JSON.stringify(state)}`)
-    console.log('En CONFIRMATION')
+    //console.log(`[State from Confirmation]: ${JSON.stringify(state)}`)
     return {
         
     }

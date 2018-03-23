@@ -21,7 +21,7 @@ function ConfirmationScreen(props) {
             />
 
             <ButtonDP 
-                onPress={()=>{}}
+                onPress={props.redirectToReport}
                 title='REPORTE VENDEDORES'
             />
         </View>

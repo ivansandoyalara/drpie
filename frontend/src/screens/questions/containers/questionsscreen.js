@@ -37,8 +37,7 @@ class QuestionsScreen extends Component {
 }
 
 function mapStateToProps(state, props) {
-    //console.log(`El state (questions) es: ${JSON.stringify(state)}`)
-    console.log('En QUESTIONS')
+    //console.log(`[State from Questions]: ${JSON.stringify(state)}`)
     return {
         questions: state.questions.items,
         loading: state.questions.loading,

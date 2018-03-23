@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchBranches, selectBranch } from '../../../actions/branches'
+import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import BranchScreenLayout from '../components/branchscreen'
-import { Text } from 'react-native'
+import { 
+    NetInfo,
+    Text 
+} from 'react-native'
 
 class BranchScreen extends Component {
     onChangePicker = (itemValue, itemPosition) => {
@@ -16,8 +20,21 @@ class BranchScreen extends Component {
             this.props.navigation.navigate('Questions')
     }
 
+    handleConnectionChange = isConnected => {
+        this.props.dispatch(changeConnectionStatus(isConnected))
+        // if connected, try to fetch branches
+        if(this.props.isConnected)
+            this.props.dispatch(fetchBranches())
+    }
+
     componentDidMount() {
-        this.props.dispatch(fetchBranches())
+        // verify internet connection status
+        NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
+    }
+
+    componentWillUnmount() {
+        // remove connectivity status listener
+        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
     }
 
     render() {
@@ -37,12 +54,12 @@ class BranchScreen extends Component {
 }
 
 function mapStateToProps(state, props) {
-    //console.log(`El state (branch) es: ${JSON.stringify(state)}`)
-    console.log('En BRANCHES')
+    console.log(`[State from Branch]: ${JSON.stringify(state)}`)
     return {
         branches: state.branches.items,
         selectedBranch: state.branches.selectedItem,
         loading: state.branches.loading,
+        isConnected: state.connectionstatus.isConnected,
     }
 }
 
