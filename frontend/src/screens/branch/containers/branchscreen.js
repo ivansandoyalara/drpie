@@ -16,11 +16,15 @@ class BranchScreen extends Component {
 
     pressNextButton = () => {
         console.log(`Redirecting to Questions view...`)
-        if(this.props.selectedBranch != 0)
+        if(this.props.selectedBranch != 0) {
+            // remove event listener
+            NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
             this.props.navigation.navigate('Questions')
+        }
     }
 
     handleConnectionChange = isConnected => {
+        console.log(`INGRESA AL CALLBACK BRANCHES ------------------`)
         this.props.dispatch(changeConnectionStatus(isConnected))
         // if connected, try to fetch branches
         if(this.props.isConnected)
@@ -30,11 +34,6 @@ class BranchScreen extends Component {
     componentDidMount() {
         // verify internet connection status
         NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
-    }
-
-    componentWillUnmount() {
-        // remove connectivity status listener
-        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
     }
 
     render() {
