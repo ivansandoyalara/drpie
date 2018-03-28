@@ -2,6 +2,7 @@ export const QUEUE_VISITOR = 'QUEUE_VISITOR'
 export const SYNC_VISITOR_BEGIN = 'SYNC_VISITOR_BEGIN'
 export const SYNC_VISITOR_SUCCESS = 'SYNC_VISITOR_SUCCESS'
 export const SYNC_VISITOR_FAILURE = 'SYNC_VISITOR_FAILURE'
+export const RESET_QUEUE_SYNC_STATUS = 'RESET_STATUS'
 
 import { apiDirectory } from '../config'
 
@@ -17,3 +18,7 @@ function handleErrors(response) {
     }
     return response;
 }
+
+export const resetQueueSyncStatus = () => ({
+    type: RESET_QUEUE_SYNC_STATUS
+})

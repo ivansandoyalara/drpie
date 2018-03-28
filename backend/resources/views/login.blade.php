@@ -24,8 +24,9 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" style="text-align: center;">
                                 <h4 class="card-title text-center"> Iniciar sesión</h4>
+                                <img src="{{ asset('/img/logo.jpg') }}" alt="Dr. Pie" style="width: 60%;">
                             </div>
                             <div class="card-body">
                                 @if(session('error'))

@@ -20,7 +20,7 @@ export function fetchVisitor(values) {
         .then(handleErrors)
         .then(response => response.json())
         .then(json => {
-            //console.log(JSON.stringify(json))
+            console.log(`Posting json data (visitor)...`)
             dispatch(fetchVisitorSuccess(json))
             return json
         })

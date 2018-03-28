@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import ConfirmationScreenLayout from '../components/confirmationscreen'
 
 class ConfirmationScreen extends Component {
+    static navigationOptions = {
+        title: 'Confirmación',
+    }
+
     redirectToBranches = () => (
         this.props.navigation.navigate('Branch')
     )

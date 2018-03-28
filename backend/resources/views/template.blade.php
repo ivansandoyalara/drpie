@@ -23,9 +23,9 @@
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-            <div class="logo">
+            <div class="logo" style="text-align: center;">
                 <a href="{{ URL::to('visitors') }}" class="simple-text logo-normal">
-                    DP
+                    <img src="{{ asset('./img/logo.png') }}" alt="Dr. Pie" style="width: 70%;"/>
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -81,7 +81,7 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="#pablo">Table List</a>
+                        <a class="navbar-brand" href="{{ URL::to('visitors') }}">EVALUACIÓN DE PISADAS</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>

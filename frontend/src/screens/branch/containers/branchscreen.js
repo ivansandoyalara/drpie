@@ -9,6 +9,10 @@ import {
 } from 'react-native'
 
 class BranchScreen extends Component {
+    static navigationOptions = {
+        title: 'Punto de venta',
+    }
+
     onChangePicker = (itemValue, itemPosition) => {
         console.log(`Branch id selected: ${itemValue}`)
         this.props.dispatch(selectBranch(itemValue))
@@ -24,7 +28,6 @@ class BranchScreen extends Component {
     }
 
     handleConnectionChange = isConnected => {
-        console.log(`INGRESA AL CALLBACK BRANCHES ------------------`)
         this.props.dispatch(changeConnectionStatus(isConnected))
         // if connected, try to fetch branches
         if(this.props.isConnected)
