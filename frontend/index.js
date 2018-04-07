@@ -14,7 +14,7 @@ import rootReducer from './src/reducers/index'
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['form'], // form state will not be persisted
+    blacklist: ['form', 'connectionstatus'], // form state and connection status will not be persisted
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

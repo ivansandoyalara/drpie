@@ -30,4 +30,11 @@ Route::middleware(['customAuth'])->group(function () {
     Route::get('users/{id}/status/{status}', 'UserController@updateStatus');
 
     Route::resource('questions', 'QuestionController');
+
+    // only for testing purpouses 
+    Route::get('/mailable', function () {
+        $visitor = App\Visitor::find(76);
+    
+        return new App\Mail\VisitorStored($visitor);
+    });
 });

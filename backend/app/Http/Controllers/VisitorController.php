@@ -8,9 +8,11 @@ use App\Employee;
 use App\Question;
 use App\Response;
 use App\Option;
+use App\Mail\VisitorStored;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 
 class VisitorController extends Controller
@@ -246,6 +248,10 @@ class VisitorController extends Controller
                     }
                 }
             }
+
+            // handle async email sending
+            Mail::to($visitor_item->email)
+                ->queue(new VisitorStored($visitor_item));
         });
 
         return response()

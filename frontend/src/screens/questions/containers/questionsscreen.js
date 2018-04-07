@@ -4,7 +4,7 @@ import { fetchQuestions } from '../../../actions/questions'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import { reset } from 'redux-form'
 import { fetchVisitor, resetVisitorStatus } from '../../../actions/visitor'
-import { queueVisitor, resetQueueSyncStatus } from '../../../actions/queuedvisitors'
+import { queueVisitor, resetQueueSyncStatus, syncVisitors } from '../../../actions/queuedvisitors'
 import VisitForm from '../components/visitform'
 import { 
     NetInfo,
@@ -21,13 +21,25 @@ class QuestionsScreen extends Component {
     handleConnectionChange = isConnected => {
         this.props.dispatch(changeConnectionStatus(isConnected))
         // if connected, try to fetch branches
-        if(this.props.isConnected)
+        if(this.props.isConnected) {
             this.props.dispatch(fetchQuestions())
+            // additionally here try to sync queued visitors
+            this.props.dispatch(syncVisitors(this.props.queuedVisitors))
+        }
     }
 
     onBackPress = () => (true)
 
     componentDidMount() {
+        // get initial internet connection info
+        NetInfo.isConnected.fetch().then(isConnected => {
+            this.props.dispatch(changeConnectionStatus(isConnected))
+            if(isConnected) {
+                this.props.dispatch(fetchQuestions())
+                // additionally here try to sync queued visitors
+                this.props.dispatch(syncVisitors(this.props.queuedVisitors))
+            }
+        });
         // verify internet connection status
         NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
         // prevent hardware back default function
@@ -35,7 +47,7 @@ class QuestionsScreen extends Component {
     }
 
     componentDidUpdate() {
-        //if visitor data was stored successfully then redirect to confirmation
+        //if visitor data was stored or queued successfully then redirect to confirmation
         if(this.props.status === 'STORE_VISITOR_OK' || this.props.queueStatus) {
             this.props.dispatch(resetVisitorStatus()) // reseting visitor status
             this.props.dispatch(resetQueueSyncStatus()) // reseting visitors queue and sync status
@@ -76,6 +88,7 @@ function mapStateToProps(state, props) {
         status: state.visitor.status,
         queueStatus: state.queuedvisitors.queueStatus,
         isConnected: state.connectionstatus.isConnected,
+        queuedVisitors: state.queuedvisitors.visitors,
     }
 }
 

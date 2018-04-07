@@ -23,8 +23,31 @@ export default function queuedVisitorsReducer(state = initialState, action) {
                 queueStatus: true,
             }
         
+        case SYNC_VISITOR_BEGIN:
+            // set syncStatus to true
+            return {
+                ...state,
+                syncStatus: true,
+            }
+
+        case SYNC_VISITOR_SUCCESS:
+            // replace entirely visitors attribute and set syncStatus to false
+            return {
+                ...state,
+                visitors: action.payload.visitors,
+                syncStatus: false,
+            }
+
+        case SYNC_VISITOR_FAILURE:
+            // Save the error, and we can display it somewhere. Set syncStatus to false
+            return {
+                ...state,
+                syncStatus: false,
+                error: action.payload.error,
+            }
+
         case RESET_QUEUE_SYNC_STATUS:
-            // set queueStatus and syncStatus again to null
+            // set queueStatus and syncStatus again to false
             return {
                 ...state,
                 queueStatus: false,
