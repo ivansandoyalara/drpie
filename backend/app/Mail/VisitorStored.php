@@ -36,7 +36,8 @@ class VisitorStored extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@doctor-pie.com')
+        return $this->from('noreply@doctor-pie.com', 'Dr. Pie - Calzado Alemán')
+            ->subject('Resultado de tu evaluación de pisada')
             ->view('emails.visitor');
     }
 }
