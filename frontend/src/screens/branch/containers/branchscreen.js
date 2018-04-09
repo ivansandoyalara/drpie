@@ -4,9 +4,9 @@ import { fetchBranches, selectBranch } from '../../../actions/branches'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import { syncVisitors } from '../../../actions/queuedvisitors'
 import BranchScreenLayout from '../components/branchscreen'
+import LoadingScreen from '../../loading/loading'
 import { 
     NetInfo,
-    Text 
 } from 'react-native'
 
 class BranchScreen extends Component {
@@ -56,7 +56,7 @@ class BranchScreen extends Component {
     render() {
         if(this.props.loading)
             return (
-                <Text>Cargando ...</Text>
+                <LoadingScreen />
             )
         return (
             <BranchScreenLayout 

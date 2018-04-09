@@ -6,6 +6,7 @@ function ButtonDP(props) {
         <Button 
             onPress={props.onPress}
             title={props.title}
+            color='#fa0f0c'
         />
     )
 }
