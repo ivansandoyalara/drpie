@@ -6,9 +6,9 @@ import { reset } from 'redux-form'
 import { fetchVisitor, resetVisitorStatus } from '../../../actions/visitor'
 import { queueVisitor, resetQueueSyncStatus, syncVisitors } from '../../../actions/queuedvisitors'
 import VisitForm from '../components/visitform'
+import LoadingScreen from '../../loading/loading'
 import { 
     NetInfo,
-    Text,
     BackHandler,
 } from 'react-native'
 
@@ -16,6 +16,10 @@ class QuestionsScreen extends Component {
     static navigationOptions = {
         title: 'Evaluación de pisada',
         headerLeft: null,
+        headerStyle: {
+            backgroundColor: '#fa0f0c',
+        },
+        headerTintColor: '#fff',
     }
 
     handleConnectionChange = isConnected => {
@@ -70,7 +74,7 @@ class QuestionsScreen extends Component {
 
     render() {
         if(this.props.loading)
-            return <Text>Cargando ...</Text>
+            return <LoadingScreen />
         return (
             <VisitForm 
                 questions={this.props.questions}

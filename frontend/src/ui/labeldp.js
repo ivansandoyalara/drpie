@@ -1,10 +1,18 @@
 import React from 'react'
-import { Text } from 'react-native'
+import appStyles from '../styles/styles'
+import { 
+    StyleSheet, 
+    Text 
+} from 'react-native'
 
 function LabelDP(props) {
     return (
-        <Text>{props.label}</Text>
+        <Text
+            style={styles.label}
+        >{props.label}</Text>
     )
 }
+
+const styles = StyleSheet.create(appStyles)
 
 export default LabelDP

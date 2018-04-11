@@ -12,7 +12,7 @@ function PickerDP(props) {
             onFocus={input.onFocus}
             selectedValue={input.value}
         >
-        <Picker.Item key={0} value={''} label={'- Seleccionar uno(a) -'}/>
+        <Picker.Item key={0} value={''} label={'- Seleccione uno(a) -'}/>
             {
                 props.options.map((item) => {
                     return (

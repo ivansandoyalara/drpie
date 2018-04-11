@@ -4,6 +4,11 @@ const styles = {
         flexDirection: 'row'
     },
 
+    row: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+
     half: {
         flex: 1
     },
@@ -37,6 +42,14 @@ const styles = {
         flex: 4
     },
 
+    fl8: {
+        flex: 8
+    },
+
+    fl10: {
+        flex: 10
+    },
+
     picker: {
         
     },
@@ -60,6 +73,60 @@ const styles = {
     logoMain: {
         width: 400,
         height: 400
+    },
+
+    loadingText: {
+        color: '#000000'
+    },
+
+    formElem: {
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+
+    logoQuestions: {
+        width: 100,
+        height: 100
+    },
+
+    paddingForm: {
+        paddingTop: 20,
+        paddingBottom: 20,
+    },
+
+    label: {
+        color: '#ffffff',
+        backgroundColor: '#fa0f0c',
+        padding: 10,
+        borderRadius: 3,
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+
+    marginFormRow: {
+        marginBottom: 10,
+    },
+
+    buttonContainer: {
+        marginTop: 20
+    },
+
+    marginButtonLeft: {
+        marginLeft: 10
+    },
+
+    marginButtonRight: {
+        marginRight: 10
+    },
+
+    checkboxText: {
+        color: '#000000',
+        fontSize: 16,
+    },
+
+    checkbox: {
+        width: 20,
+        height: 20,
     }
 }
 
