@@ -14,7 +14,7 @@ function BranchScreenLayout(props) {
         <View style={styles.container}>
             <View style={[styles.half, styles.middleCentered, styles.red]}>
                 <Image 
-                    source={require('../../../styles/images/logo.png')}
+                    //source={require('../../../styles/images/logo.png')}
                     style={styles.logoMain}
                 />
             </View>

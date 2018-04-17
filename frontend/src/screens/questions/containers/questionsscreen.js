@@ -59,7 +59,9 @@ class QuestionsScreen extends Component {
             // remove event listener
             NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
             // navigate to confirmation screen
-            this.props.navigation.navigate('Confirmation')
+            this.props.navigation.navigate('Confirmation', {
+                submitted: true
+            })
         }
     }
 
@@ -72,6 +74,10 @@ class QuestionsScreen extends Component {
             this.props.dispatch(queueVisitor(values))
     }
 
+    redirectToConfirmation = () => (
+        this.props.navigation.navigate('Confirmation')
+    )
+
     render() {
         if(this.props.loading)
             return <LoadingScreen />
@@ -79,6 +85,7 @@ class QuestionsScreen extends Component {
             <VisitForm 
                 questions={this.props.questions}
                 onSubmit={this.submitForm}
+                redirectToConfirmation={this.redirectToConfirmation}
             />
         )
     }

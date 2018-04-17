@@ -4,7 +4,7 @@ import ConfirmationScreenLayout from '../components/confirmationscreen'
 
 class ConfirmationScreen extends Component {
     static navigationOptions = {
-        title: 'Confirmación',
+        title: 'Menú',
     }
 
     redirectToBranches = () => (
@@ -15,17 +15,21 @@ class ConfirmationScreen extends Component {
         this.props.navigation.navigate('Questions')
     )
 
-    redirectToReport = () => (
+    redirectToReport = () => {
         console.log('redirecting to report ...')
-        //this.props.navigation.navigate('Report')
-    )
+        this.props.navigation.navigate('Report')
+    }
 
     render() {
+        const { params } = this.props.navigation.state
+        const submitted = params ? true : false
+
         return (
             <ConfirmationScreenLayout 
                 redirectToBranches={this.redirectToBranches}
                 redirectToQuestions={this.redirectToQuestions}
                 redirectToReport={this.redirectToReport}
+                submitted={submitted}
             />
         )
     }

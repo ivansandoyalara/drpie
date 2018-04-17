@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Employee;
+use App\Visitor;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -144,5 +145,27 @@ class EmployeeController extends Controller
                     ->get();
 
         return $employees;
+    }
+
+    public function reportAPI($employee_code)
+    {
+        $employee = Employee::where('code', '=', $employee_code)
+            ->first();
+
+        if(count($employee) == 0)
+            return null;
+
+        $count = Visitor::whereMonth('created_at', date('m'))
+                    ->where('employee_id', '=', $employee->id)
+                    ->count();
+
+        $response = array(
+            "employee" => $employee,
+            "count" => $count,
+        );
+
+        return response()
+                ->json($response)
+                ->header('Access-Control-Allow-Origin', '*');
     }
 }

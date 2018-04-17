@@ -1,5 +1,5 @@
-const host = `http://159.89.233.253/drpie/backend/public`
-//const host = `http://bdefe00e.ngrok.io`
+//const host = `http://159.89.233.253/drpie/backend/public`
+const host = `http://c9489d33.ngrok.io`
 
 export const config = {
     host,
@@ -9,5 +9,6 @@ export const config = {
 export const apiDirectory = {
     branches: `${config.apiEndpoint}/branches`,
     questions: `${config.apiEndpoint}/questions`,
-    visitors: `${config.apiEndpoint}/visitors`
+    visitors: `${config.apiEndpoint}/visitors`,
+    employeeReport: `${config.apiEndpoint}/report`,
 }

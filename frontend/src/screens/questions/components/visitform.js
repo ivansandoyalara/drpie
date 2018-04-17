@@ -145,8 +145,8 @@ function VisitForm(props) {
                             </View>
                             <View style={[styles.fl1, styles.marginButtonLeft]}>
                                 <ButtonDP 
-                                    onPress={props.handleSubmit}
-                                    title='ENVIAR'
+                                    onPress={props.redirectToConfirmation}
+                                    title='MENU'
                                 />
                             </View>
                         </View>

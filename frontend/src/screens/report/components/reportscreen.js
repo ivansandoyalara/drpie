@@ -5,10 +5,11 @@ import {
     View,
     Text,
     Image,
+    TextInput,
     StyleSheet,
 } from 'react-native'
 
-function ConfirmationScreen(props) {
+function ReportLayout(props) {
     return (
         <View style={styles.container}>
             <View style={[styles.half, styles.middleCentered, styles.red]}>
@@ -20,25 +21,28 @@ function ConfirmationScreen(props) {
             <View style={[styles.container, styles.white]}>
                 <View style={styles.fl1}></View>
                 <View style={styles.fl3}>
-                {
-                    (props.submitted) &&
-                    <Text>Guardado exitoso!</Text>
-                }
-
-                    <ButtonDP 
-                        onPress={props.redirectToBranches}
-                        title='SELECCIONAR PUNTO DE VENTA'
+                    <Text>CÓDIGO DE VENDEDOR</Text>
+                    <TextInput 
+                        value={props.employeeCode}
+                        onChangeText={(code) => props.changeEmployeeCode(code)}
                     />
-
                     <ButtonDP 
-                        onPress={props.redirectToQuestions}
-                        title='NUEVO CUESTIONARIO'
+                        onPress={props.handleViewReport}
+                        title='VER REPORTE'
                     />
-
                     <ButtonDP 
-                        onPress={props.redirectToReport}
-                        title='REPORTE VENDEDORES'
+                        onPress={props.handleViewReport}
+                        title='VER REPORTE'
                     />
+                    {
+                        (props.employeeReport) &&
+                            <View>
+                            <Text>{ props.employeeReport.employee.name }</Text>
+                            <Text>{ props.employeeReport.count }</Text>
+                            <Text>Evaluaciones</Text>
+                            <Text>Desde - Hasta</Text>
+                        </View>
+                    }
                 </View>
                 <View style={styles.fl1}></View>
             </View>
@@ -48,4 +52,4 @@ function ConfirmationScreen(props) {
 
 const styles = StyleSheet.create(appStyles)
 
-export default ConfirmationScreen
+export default ReportLayout

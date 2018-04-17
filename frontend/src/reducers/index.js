@@ -2,7 +2,7 @@ import connectionstatus from './connectionstatus'
 import branches from './branches'
 import questions from './questions'
 import visitor from './visitor'
-//import report from './report'
+import report from './report'
 import queuedvisitors from './queuedvisitors'
 import { reducer as formReducer } from 'redux-form'
 import { combineReducers } from 'redux'
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     branches,
     questions,
     visitor,
-    //report,
+    report,
     queuedvisitors,
     form: formReducer,
 })

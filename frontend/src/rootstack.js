@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation'
 import BranchScreen from './screens/branch/containers/branchscreen'
 import QuestionsScreen from './screens/questions/containers/questionsscreen'
 import ConfirmationScreen from './screens/confirmation/containers/confirmationscreen'
+import ReportScreen from './screens/report/containers/reportscreen'
 
 const RootStack = StackNavigator({
     Branch: {
@@ -14,6 +15,9 @@ const RootStack = StackNavigator({
     },
     Confirmation: {
       screen: ConfirmationScreen
+    },
+    Report: {
+      screen: ReportScreen
     }
   },
   {
