@@ -198,7 +198,7 @@ const validate = values => {
 
     if(!values.gender) {
         errors.gender = 'Requerido'
-    } else if (values.gender != 'M' && values.gender != 'F') {
+    } else if (values.gender != 1 && values.gender != 2) {
         errors.gender = 'Requerido'
     }
 

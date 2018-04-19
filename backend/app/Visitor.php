@@ -26,6 +26,8 @@ class Visitor extends Model
         'name',
         'surname',
         'email',
+        'gender',
+        'footprint',
         'branch_id',
         'employee_id',
     ];
