@@ -27,7 +27,7 @@
             width: 100px;
         }
 
-        .header span {
+        .header h2 {
             color: white;
         }
 
@@ -55,7 +55,7 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <h3>Dr. Pie - Calzado Alemán</h3>
+            <h2>Dr. Pie - Calzado Alemán</h2>
         </div>
         <div class="content">
             @yield('content')

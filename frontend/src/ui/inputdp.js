@@ -17,6 +17,8 @@ function InputDP(props) {
                 onFocus={input.onFocus}
                 value={input.value}
                 placeholder={props.placeholder}
+                returnKeyType='next'
+                keyboardType={props.keyboardType}
             />
             {
                 meta.touched && meta.error &&

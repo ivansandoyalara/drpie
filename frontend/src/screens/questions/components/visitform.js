@@ -36,6 +36,7 @@ function VisitForm(props) {
                                 name={'employee_code'}
                                 component={InputDP}
                                 placeholder='Ej: G001'
+                                keyboardType='default'
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
@@ -46,6 +47,7 @@ function VisitForm(props) {
                                 name={'email'}
                                 component={InputDP}
                                 placeholder='Ej: nombre@email.com'
+                                keyboardType='email-address'
                             />
                         </View>
                     </View>
@@ -58,6 +60,7 @@ function VisitForm(props) {
                                 name={'name'}
                                 component={InputDP}
                                 placeholder='Ej: Juan'
+                                keyboardType='default'
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
@@ -68,6 +71,7 @@ function VisitForm(props) {
                                 name={'surname'}
                                 component={InputDP}
                                 placeholder='Ej: Perez'
+                                keyboardType='default'
                             />
                         </View>
                     </View>
@@ -90,6 +94,7 @@ function VisitForm(props) {
                                 name={'legal_id'}
                                 component={InputDP}
                                 placeholder='Ej: 0934857394'
+                                keyboardType='default'
                             />
                         </View>
                     </View>
@@ -137,6 +142,7 @@ function VisitForm(props) {
                                                 name={`q_${item.id}`}
                                                 component={InputDP}
                                                 placeholder=''
+                                                keyboardType='default'
                                             />
                                         </View>
                                     }
