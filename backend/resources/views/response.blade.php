@@ -19,12 +19,17 @@
             </tr>
             <tr>
                 <td><span>Género</span></td>
-                <td>{{ $visitor->gender }}</td>
+                <td>
+                    @if($visitor->gender == '1')
+                    Masculino
+                    @else
+                    Femenino
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td><span>Tipo de pisada</span></td>
                 <td>
-                    {{ $visitor->footprint }}
                     @if($visitor->footprint == '0')
                         Pie cavo
                     @elseif($visitor->footprint == '1')

@@ -55,7 +55,6 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <img src="{{ $message->embed(asset('/img/logo.png')) }}" alt="Dr. Pie logo">
             <span>Dr. Pie - Calzado Alemán</span>
         </div>
         <div class="content">
