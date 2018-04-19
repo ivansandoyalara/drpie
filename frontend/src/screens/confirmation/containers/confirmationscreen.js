@@ -57,6 +57,7 @@ class ConfirmationScreen extends Component {
                 redirectToQuestions={this.redirectToQuestions}
                 redirectToReport={this.redirectToReport}
                 submitted={submitted}
+                isConnected={this.props.isConnected}
             />
         )
     }

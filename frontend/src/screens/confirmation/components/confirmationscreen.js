@@ -46,13 +46,16 @@ function ConfirmationScreen(props) {
                         />
                     </View>
 
-                    <View style={styles.marginFormRow}>
-                        <ButtonDP 
-                            onPress={props.redirectToReport}
-                            title='REPORTE VENDEDORES'
-                            buttonColor='blue'
-                        />
-                    </View>
+                    {
+                        isConnected &&
+                        <View style={styles.marginFormRow}>
+                            <ButtonDP 
+                                onPress={props.redirectToReport}
+                                title='REPORTE VENDEDORES'
+                                buttonColor='blue'
+                            />
+                        </View>
+                    }
                 </View>
                 <View style={styles.fl1}></View>
             </View>
