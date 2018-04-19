@@ -79,7 +79,7 @@ class QuestionsScreen extends Component {
     )
 
     render() {
-        if(this.props.loading)
+        if(this.props.loading || this.props.loadingVisitor)
             return <LoadingScreen />
         return (
             <VisitForm 
@@ -96,6 +96,7 @@ function mapStateToProps(state, props) {
     return {
         questions: state.questions.items,
         loading: state.questions.loading,
+        loadingVisitor: state.visitor.loading,
         status: state.visitor.status,
         queueStatus: state.queuedvisitors.queueStatus,
         isConnected: state.connectionstatus.isConnected,

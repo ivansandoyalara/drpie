@@ -55,13 +55,13 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <span>Dr. Pie - Calzado Alemán</span>
+            <h3>Dr. Pie - Calzado Alemán</h3>
         </div>
         <div class="content">
             @yield('content')
         </div>
         <div class="footer">
-            Mensaje enviado automáticamente por Dr. Pie <br>
+            Mensaje enviado automáticamente por app Dr. Pie <br>
             Todos los derechos reservados &copy;{{ date('Y') }} 🌟
         </div>
     </div>

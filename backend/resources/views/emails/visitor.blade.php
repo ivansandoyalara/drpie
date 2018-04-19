@@ -10,8 +10,8 @@
     @endif
     <br>
     <p>Por favor ingresa al siguiente <b><a href="#">enlace</a></b> para acceder a tu evaluación de pisada,
-    como a las recomendaciones que te podemos brindar como especialistas en el cuidado de tus pies.</p>
+    también podrás encontrar las recomendaciones que te podemos brindar como especialistas en el cuidado de tus pies.</p>
     <br>
     <p>Atentamente,</p>
-    <p>Tus amigos de Dr. Pie</p>
+    <p><b>Tus amigos de Dr. Pie</b></p>
 @endsection
