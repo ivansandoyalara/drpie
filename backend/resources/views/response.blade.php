@@ -22,12 +22,17 @@
                 <td>{{ $visitor->gender }}</td>
             </tr>
             <tr>
-                <td><span>Teléfono</span></td>
-                <td>{{ $visitor->phone }}</td>
-            </tr>
-            <tr>
-                <td><span>Huella</span></td>
-                <td>{{ $visitor->footprint }}</td>
+                <td><span>Tipo de pisada</span></td>
+                <td>
+                    {{ $visitor->footprint }}
+                    @if($visitor->footprint == '0')
+                        Pie cavo
+                    @elseif($visitor->footprint == '1')
+                        Pie medio
+                    @elseif($visitor->footprint == '2')
+                        Pie plano
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td><span>Visitas realizadas</span></td>
@@ -37,10 +42,12 @@
                 <td><span>Punto de venta</span></td>
                 <td>{{ $visitor->branch->name }}</td>
             </tr>
+            @if(count($visitor->employee) > 0)
             <tr>
                 <td><span>Vendedor</span></td>
                 <td>{{ $visitor->employee->name }}</td>
             </tr>
+            @endif
             @foreach($visitor->responses as $response)
                 <tr>
                     <td><span>{{ $response->question }}</span></td>

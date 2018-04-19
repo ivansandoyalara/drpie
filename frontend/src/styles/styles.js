@@ -85,8 +85,8 @@ const styles = {
     },
 
     logoQuestions: {
-        width: 100,
-        height: 100
+        width: 135,
+        height: 135
     },
 
     paddingForm: {
@@ -127,6 +127,40 @@ const styles = {
     checkbox: {
         width: 20,
         height: 20,
+    },
+
+    textCenter: {
+        textAlign: 'center',
+    },
+
+    reportCount: {
+        color: 'black',
+        fontSize: 40,
+        fontWeight: 'bold',
+        borderStyle: 'dashed',
+        borderColor: '#000000',
+        borderWidth: 7,
+        marginBottom: 10,
+        paddingTop: 10
+    },
+
+    textBlack: {
+        color: 'black',
+    },
+
+    imageHolder: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        borderStyle: 'dashed',
+        borderColor: '#000000',
+        borderWidth: 7,
+        paddingTop: 10
+    },
+
+    imageCentered: {
+        width: 80,
+        height: 80
     }
 }
 

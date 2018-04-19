@@ -1,13 +1,17 @@
 @extends('emails.template')
 
 @section('content')
-    <h3>Visitante almacenado exitosamente</h3>
-    <p>Nombres: {{ $visitor->name." ".$visitor->surname }}</p>
-    <p>Local: {{ $visitor->branch->name }}</p>
-    @if(count($visitor->employee))
-        <p>Vendedor: {{ $visitor->employee->name }}</p>
+    <p>Hola! hemos registrado tu evaluación de pisada exitosamente, muchas gracias por confiar en nosotros.</p>
+    <br>
+    <p><b>Nombres:</b> {{ $visitor->name." ".$visitor->surname }}</p>
+    <p><b>Local:</b> {{ $visitor->branch->name }}</p>
+    @if(count($visitor->employee) > 0)
+        <p><b>Vendedor:</b> {{ $visitor->employee->name }}</p>
     @endif
-    @foreach($visitor->responses as $response)
-        <p><b>{{ $response->question }}: </b>{{ $response->response }}</p>
-    @endforeach
+    <br>
+    <p>Por favor ingresa al siguiente <b><a href="#">enlace</a></b> para acceder a tu evaluación de pisada,
+    como a las recomendaciones que te podemos brindar como especialistas en el cuidado de tus pies.</p>
+    <br>
+    <p>Atentamente,</p>
+    <p>Tus amigos de Dr. Pie</p>
 @endsection

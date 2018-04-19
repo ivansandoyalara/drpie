@@ -22,7 +22,7 @@ class CreateVisitorsTable extends Migration
             $table->integer('gender')->nullable();
             $table->string('phone')->nullable();
             $table->integer('footprint')->nullable();
-            $table->integer('visits')->default(1);
+            $table->integer('visits')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ function ConfirmationScreen(props) {
         <View style={styles.container}>
             <View style={[styles.half, styles.middleCentered, styles.red]}>
                 <Image 
-                    //source={require('../../../styles/images/logo.png')}
+                    source={require('../../../styles/images/logo.png')}
                     style={styles.logoMain}
                 />
             </View>
@@ -22,23 +22,37 @@ function ConfirmationScreen(props) {
                 <View style={styles.fl3}>
                 {
                     (props.submitted) &&
-                    <Text>Guardado exitoso!</Text>
+                    <View style={styles.imageHolder}>
+                        <Image 
+                            source={require('../../../styles/images/ok.png')}
+                            style={styles.imageCentered}
+                        />
+                        <Text style={[styles.subtitle, styles.textCenter]}>Guardado exitoso!</Text>
+                    </View>
                 }
 
-                    <ButtonDP 
-                        onPress={props.redirectToBranches}
-                        title='SELECCIONAR PUNTO DE VENTA'
-                    />
+                    <View style={styles.marginFormRow}>
+                        <ButtonDP 
+                            onPress={props.redirectToBranches}
+                            title='SELECCIONAR PUNTO DE VENTA'
+                        />
+                    </View>
 
-                    <ButtonDP 
-                        onPress={props.redirectToQuestions}
-                        title='NUEVO CUESTIONARIO'
-                    />
+                    <View style={styles.marginFormRow}>
+                        <ButtonDP 
+                            onPress={props.redirectToQuestions}
+                            title='NUEVO CUESTIONARIO'
+                            buttonColor='green'
+                        />
+                    </View>
 
-                    <ButtonDP 
-                        onPress={props.redirectToReport}
-                        title='REPORTE VENDEDORES'
-                    />
+                    <View style={styles.marginFormRow}>
+                        <ButtonDP 
+                            onPress={props.redirectToReport}
+                            title='REPORTE VENDEDORES'
+                            buttonColor='blue'
+                        />
+                    </View>
                 </View>
                 <View style={styles.fl1}></View>
             </View>

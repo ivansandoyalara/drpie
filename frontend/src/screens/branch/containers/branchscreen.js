@@ -48,7 +48,6 @@ class BranchScreen extends Component {
                 this.props.dispatch(syncVisitors(this.props.queuedVisitors))
             }
         });
-
         // verify internet connection status (event listener)
         NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
     }

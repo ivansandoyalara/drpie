@@ -16,6 +16,7 @@ function InputDP(props) {
                 onBlur={input.onBlur}
                 onFocus={input.onFocus}
                 value={input.value}
+                placeholder={props.placeholder}
             />
             {
                 meta.touched && meta.error &&

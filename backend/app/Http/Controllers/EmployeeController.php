@@ -159,9 +159,36 @@ class EmployeeController extends Controller
                     ->where('employee_id', '=', $employee->id)
                     ->count();
 
+        $month = "";
+        if(date('m') == '01')
+            $month = "Enero";
+        if(date('m') == '02')
+            $month = "Febrero";
+        if(date('m') == '03')
+            $month = "Marzo";
+        if(date('m') == '04')
+            $month = "Abril";
+        if(date('m') == '05')
+            $month = "Mayo";
+        if(date('m') == '06')
+            $month = "Junio";
+        if(date('m') == '07')
+            $month = "Julio";
+        if(date('m') == '08')
+            $month = "Agosto";
+        if(date('m') == '09')
+            $month = "Septiembre";
+        if(date('m') == '10')
+            $month = "Octubre";
+        if(date('m') == '11')
+            $month = "Noviembre";
+        if(date('m') == '12')
+            $month = "Diciembre";
+
         $response = array(
             "employee" => $employee,
             "count" => $count,
+            "month" => $month,
         );
 
         return response()

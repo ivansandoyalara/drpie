@@ -21,7 +21,10 @@ function VisitForm(props) {
         <ScrollView style={styles.white}>
             <View style={[styles.container, styles.paddingForm]}>
                 <View style={styles.fl1}>
-                    <Text>DP</Text>
+                    <Image 
+                        source={require('../../../styles/images/logo.png')}
+                        style={styles.logoQuestions}
+                    />
                 </View>
                 <View style={styles.fl10}>
                     <View style={[styles.row, styles.marginFormRow]}>
@@ -32,6 +35,7 @@ function VisitForm(props) {
                             <Field 
                                 name={'employee_code'}
                                 component={InputDP}
+                                placeholder='Ej: G001'
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
@@ -41,6 +45,7 @@ function VisitForm(props) {
                             <Field 
                                 name={'email'}
                                 component={InputDP}
+                                placeholder='Ej: nombre@email.com'
                             />
                         </View>
                     </View>
@@ -52,6 +57,7 @@ function VisitForm(props) {
                             <Field 
                                 name={'name'}
                                 component={InputDP}
+                                placeholder='Ej: Juan'
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
@@ -61,6 +67,7 @@ function VisitForm(props) {
                             <Field 
                                 name={'surname'}
                                 component={InputDP}
+                                placeholder='Ej: Perez'
                             />
                         </View>
                     </View>
@@ -72,7 +79,7 @@ function VisitForm(props) {
                             <Field 
                                 name={'gender'}
                                 component={PickerDP}
-                                options={[{id: 'M', value: 'Masculino'}, {id: 'F', value: 'Femenino'}]}
+                                options={[{id: 1, value: 'Masculino'}, {id: 2, value: 'Femenino'}]}
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
@@ -82,6 +89,7 @@ function VisitForm(props) {
                             <Field 
                                 name={'legal_id'}
                                 component={InputDP}
+                                placeholder='Ej: 0934857394'
                             />
                         </View>
                     </View>
@@ -128,6 +136,7 @@ function VisitForm(props) {
                                             <Field 
                                                 name={`q_${item.id}`}
                                                 component={InputDP}
+                                                placeholder=''
                                             />
                                         </View>
                                     }
@@ -141,12 +150,14 @@ function VisitForm(props) {
                                 <ButtonDP 
                                     onPress={props.handleSubmit}
                                     title='ENVIAR'
+                                    buttonColor='green'
                                 />
                             </View>
                             <View style={[styles.fl1, styles.marginButtonLeft]}>
                                 <ButtonDP 
                                     onPress={props.redirectToConfirmation}
                                     title='MENU'
+                                    buttonColor='blue'
                                 />
                             </View>
                         </View>

@@ -204,9 +204,15 @@ class VisitorController extends Controller
                 'surname' => $request->surname,
                 'legal_id' => $request->legal_id,
                 'email' => $request->email,
+                'gender' => $request->gender,
+                'footprint' => $request->footprint,
                 'branch_id' => $request->branch_id,
                 'employee_id' => $employee_id,
             ]);
+
+            //increment by 1 the number of visits for that visitor
+            $visitor_item->visits += 1;
+            $visitor_item->save();
 
             //get responses
             $inputs = $request->all();
