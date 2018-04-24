@@ -189,6 +189,7 @@ class EmployeeController extends Controller
             "employee" => $employee,
             "count" => $count,
             "month" => $month,
+            "year" => date('Y'),
         );
 
         return response()

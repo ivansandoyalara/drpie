@@ -47,7 +47,7 @@ function ConfirmationScreen(props) {
                     </View>
 
                     {
-                        isConnected &&
+                        props.isConnected &&
                         <View style={styles.marginFormRow}>
                             <ButtonDP 
                                 onPress={props.redirectToReport}

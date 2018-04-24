@@ -205,6 +205,7 @@ class VisitorController extends Controller
                 'legal_id' => $request->legal_id,
                 'email' => $request->email,
                 'gender' => $request->gender,
+                'phone' => $request->phone,
                 'footprint' => $request->footprint,
                 'branch_id' => $request->branch_id,
                 'employee_id' => $employee_id,

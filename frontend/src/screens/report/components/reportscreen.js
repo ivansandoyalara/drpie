@@ -48,7 +48,7 @@ function ReportLayout(props) {
                                 <Text style={[styles.subtitle, styles.textCenter]}>{ props.employeeReport.employee.name }</Text>
                                 <Text style={[styles.reportCount, styles.textCenter]}>{ props.employeeReport.count }</Text>
                                 <Text style={[styles.textBlack, styles.textCenter]}>Evaluacion(es)</Text>
-                                <Text style={[styles.textBlack, styles.textCenter]}>Período: { props.employeeReport.month }</Text>
+                                <Text style={[styles.textBlack, styles.textCenter]}>Período: { props.employeeReport.month }, {props.employeeReport.year}</Text>
                             </View>
                     }
                 </View>

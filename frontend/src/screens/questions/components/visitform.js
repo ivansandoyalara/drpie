@@ -8,6 +8,8 @@ import CheckBoxGroupDP from '../../../ui/checkboxgroupdp'
 import ButtonDP from '../../../ui/buttondp'
 import appStyles from '../../../styles/styles'
 import FootPrint from './footprint'
+import Gender from './gender'
+import ecLegalId from '../../../eclegalid'
 import {
     StyleSheet,
     View,
@@ -29,13 +31,13 @@ function VisitForm(props) {
                 <View style={styles.fl10}>
                     <View style={[styles.row, styles.marginFormRow]}>
                         <View style={[styles.fl2, styles.formElem]}>
-                            <LabelDP label='Código vendedor'/>
+                            <LabelDP label='Cédula'/>
                         </View>
                         <View style={[styles.fl3, styles.formElem]}>
                             <Field 
-                                name={'employee_code'}
+                                name={'legal_id'}
                                 component={InputDP}
-                                placeholder='Ej: G001'
+                                placeholder='Ej: 0934857394'
                                 keyboardType='default'
                             />
                         </View>
@@ -82,19 +84,18 @@ function VisitForm(props) {
                         <View style={[styles.fl3, styles.formElem]}>
                             <Field 
                                 name={'gender'}
-                                component={PickerDP}
-                                options={[{id: 1, value: 'Masculino'}, {id: 2, value: 'Femenino'}]}
+                                component={Gender}
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
-                            <LabelDP label='Cédula'/>
+                            <LabelDP label='Celular'/>
                         </View>
                         <View style={[styles.fl3, styles.formElem]}>
                             <Field 
-                                name={'legal_id'}
+                                name={'phone'}
                                 component={InputDP}
-                                placeholder='Ej: 0934857394'
-                                keyboardType='default'
+                                placeholder='Ej: 0983452714'
+                                keyboardType='phone-pad'
                             />
                         </View>
                     </View>
@@ -106,6 +107,19 @@ function VisitForm(props) {
                             <Field
                                 name={'footprint'}
                                 component={FootPrint}
+                            />
+                        </View>
+                    </View>
+                    <View style={[styles.row, styles.marginFormRow]}>
+                        <View style={[styles.fl2, styles.formElem]}>
+                            <LabelDP label='Código vendedor'/>
+                        </View>
+                        <View style={[styles.fl8, styles.formElem]}>
+                            <Field 
+                                name={'employee_code'}
+                                component={InputDP}
+                                placeholder='Ej: G001'
+                                keyboardType='numeric'
                             />
                         </View>
                     </View>
@@ -154,16 +168,16 @@ function VisitForm(props) {
                         <View style={[styles.row, styles.formElem]}>
                             <View style={[styles.fl1, styles.marginButtonRight]}>
                                 <ButtonDP 
-                                    onPress={props.handleSubmit}
-                                    title='ENVIAR'
-                                    buttonColor='green'
+                                    onPress={props.redirectToConfirmation}
+                                    title='MENU'
+                                    buttonColor='blue'
                                 />
                             </View>
                             <View style={[styles.fl1, styles.marginButtonLeft]}>
                                 <ButtonDP 
-                                    onPress={props.redirectToConfirmation}
-                                    title='MENU'
-                                    buttonColor='blue'
+                                    onPress={props.handleSubmit}
+                                    title='ENVIAR'
+                                    buttonColor='green'
                                 />
                             </View>
                         </View>
@@ -180,20 +194,36 @@ const validate = values => {
 
     if(!values.employee_code) {
         errors.employee_code = 'Requerido'
+    } else if (values.employee_code.length < 3) {
+        errors.employee_code = 'Como mínimo 3 caracteres'
     }
 
     if(!values.name) {
         errors.name = 'Requerido'
+    } else if (values.name.length < 3) {
+        errors.name = 'Como mínimo 3 caracteres'
     }
 
     if(!values.surname) {
         errors.surname = 'Requerido'
+    } else if (values.surname.length < 3) {
+        errors.surname = 'Como mínimo 3 caracteres'
+    }
+
+    if(!values.phone) {
+        errors.phone = 'Requerido'
+    } else if (values.phone.length < 3) {
+        errors.phone = 'Como mínimo 3 caracteres'
     }
 
     if(!values.legal_id) {
         errors.legal_id = 'Requerido'
     } else if (values.legal_id.length < 10) {
         errors.legal_id = 'Como mínimo 10 caracteres'
+    } else if (true) {
+        const ec_legal_id_validation = ecLegalId(values.legal_id)
+        if(ec_legal_id_validation.error)
+        errors.legal_id = 'Cédula inválida'
     }
 
     if(!values.email) {
@@ -206,6 +236,12 @@ const validate = values => {
         errors.gender = 'Requerido'
     } else if (values.gender != 1 && values.gender != 2) {
         errors.gender = 'Requerido'
+    }
+
+    if(!values.footprint) {
+        errors.footprint = 'Requerido'
+    } else if (values.footprint != 0 && values.footprint != 1 && values.footprint != 2) {
+        errors.footprint = 'Requerido'
     }
 
     return errors

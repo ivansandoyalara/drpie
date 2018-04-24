@@ -51,7 +51,7 @@ const styles = {
     },
 
     picker: {
-        
+        marginBottom: 20
     },
 
     subtitle: {
@@ -99,12 +99,12 @@ const styles = {
         backgroundColor: '#fa0f0c',
         padding: 10,
         borderRadius: 3,
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
     },
 
     marginFormRow: {
-        marginBottom: 10,
+        marginBottom: 40,
     },
 
     buttonContainer: {
@@ -161,7 +161,17 @@ const styles = {
     imageCentered: {
         width: 80,
         height: 80
-    }
+    },
+
+    errorText: {
+        color: '#fa0f0c',
+        fontWeight: 'bold',
+    },
+
+    radioText: {
+        color: '#000000',
+        fontSize: 16,
+    },
 }
 
 export default styles

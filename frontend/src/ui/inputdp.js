@@ -1,5 +1,8 @@
 import React from 'react'
+//import appStyles from '../../../styles/styles'
+import appStyles from '../styles/styles'
 import { 
+    StyleSheet,
     TextInput,
     View,
     Text,
@@ -22,10 +25,12 @@ function InputDP(props) {
             />
             {
                 meta.touched && meta.error &&
-                <Text>{meta.error}</Text>
+                <Text style={styles.errorText}>{meta.error}</Text>
             }
         </View>
     )
 }
+
+const styles = StyleSheet.create(appStyles)
 
 export default InputDP
