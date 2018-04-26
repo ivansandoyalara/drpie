@@ -2,12 +2,16 @@ import {
     FETCH_QUESTIONS_BEGIN,
     FETCH_QUESTIONS_SUCCESS,
     FETCH_QUESTIONS_FAILURE,
+    TOGGLE_EXIT_MODAL,
+    SET_QUESTIONS_FORM_TYPE,
 } from '../actions/questions'
 
 const initialState = {
     items: [],
     loading: false,
     error: null,
+    exitmodal: false,
+    cf: null,
 }
 
 export default function QuestionsReducer(state = initialState, action) {
@@ -41,6 +45,18 @@ export default function QuestionsReducer(state = initialState, action) {
                 loading: false,
                 error: action.payload.error,
                 items: []
+            }
+        
+        case TOGGLE_EXIT_MODAL:
+            return {
+                ...state,
+                exitmodal: action.payload
+            }
+
+        case SET_QUESTIONS_FORM_TYPE:
+            return {
+                ...state,
+                cf: action.payload
             }
 
         default:

@@ -1,6 +1,8 @@
 export const FETCH_QUESTIONS_BEGIN = 'FETCH_QUESTIONS_BEGIN'
 export const FETCH_QUESTIONS_SUCCESS = 'FETCH_QUESTIONS_SUCCESS'
 export const FETCH_QUESTIONS_FAILURE = 'FETCH_QUESTIONS_FAILURE'
+export const TOGGLE_EXIT_MODAL = 'TOGGLE_EXIT_MODAL'
+export const SET_QUESTIONS_FORM_TYPE = 'SET_QUESTIONS_FORM_TYPE'
 
 import { apiDirectory } from '../config'
 
@@ -43,4 +45,14 @@ export const fetchQuestionsSuccess = questions => ({
 export const fetchQuestionsFailure = error => ({
     type: FETCH_QUESTIONS_FAILURE,
     payload: { error }
+})
+
+export const toggleExitModal = status => ({
+    type: TOGGLE_EXIT_MODAL,
+    payload: status
+})
+
+export const setQuestionsFormType = type => ({
+    type: SET_QUESTIONS_FORM_TYPE,
+    payload: type
 })

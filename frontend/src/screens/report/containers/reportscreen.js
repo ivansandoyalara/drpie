@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { insertEmployeeCode, fetchEmployeeReport } from '../../../actions/report'
+import { syncVisitors } from '../../../actions/queuedvisitors'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import ReportLayout from '../components/reportscreen'
 import LoadingScreen from '../../loading/loading'

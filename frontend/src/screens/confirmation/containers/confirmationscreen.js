@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import ConfirmationScreenLayout from '../components/confirmationscreen'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import { syncVisitors } from '../../../actions/queuedvisitors'
+import { setQuestionsFormType } from '../../../actions/questions'
 import { 
     NetInfo,
 } from 'react-native'
@@ -16,9 +17,10 @@ class ConfirmationScreen extends Component {
         this.props.navigation.navigate('Branch')
     )
 
-    redirectToQuestions = () => (
+    redirectToQuestions = cf => {
+        this.props.dispatch(setQuestionsFormType(cf))
         this.props.navigation.navigate('Questions')
-    )
+    }
 
     redirectToReport = () => {
         console.log('redirecting to report ...')

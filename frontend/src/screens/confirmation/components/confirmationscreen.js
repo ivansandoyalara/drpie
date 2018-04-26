@@ -40,8 +40,16 @@ function ConfirmationScreen(props) {
 
                     <View style={styles.marginFormRow}>
                         <ButtonDP 
-                            onPress={props.redirectToQuestions}
-                            title='NUEVO CUESTIONARIO'
+                            onPress={() => {props.redirectToQuestions(false)}}
+                            title='EVALUACION ADULTOS NACIONALES'
+                            buttonColor='green'
+                        />
+                    </View>
+
+                    <View style={styles.marginFormRow}>
+                        <ButtonDP 
+                            onPress={() => {props.redirectToQuestions(true)}}
+                            title='EVALUACION NIÑOS Y EXTRANJEROS'
                             buttonColor='green'
                         />
                     </View>

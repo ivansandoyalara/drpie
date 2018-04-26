@@ -30,9 +30,8 @@ function CheckBoxGroupDP(props) {
             {
                 props.options.map((item) => {
                     return (
-                        <View style={styles.fl1}>
+                        <View style={styles.fl1} key={item.id}>
                             <Field 
-                                key={item.id}
                                 name={`${props.groupName}_${item.id}`}
                                 component={CheckBoxDP}
                                 text={item.value}

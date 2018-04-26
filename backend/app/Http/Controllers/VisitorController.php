@@ -177,7 +177,7 @@ class VisitorController extends Controller
             'branch_id' => 'required',
             'name' => 'required',
             'surname' => 'required',
-            'legal_id' => 'required|min:10',
+            'legal_id' => 'required_if:cf,false|min:10',
             'email' => 'required|email',
         ]);
 
@@ -190,6 +190,17 @@ class VisitorController extends Controller
         }
 
         DB::transaction(function() use($request) {
+            //determine if it is children or foreign 
+            $cf = $request->cf;
+            $legal_id = $request->legal_id;
+            if($cf)
+            {
+                $secuential = Visitor::count() + 1;
+                if($request->nationality == 1)
+                    $legal_id = "N".$secuential;
+                else
+                    $legal_id = "E".$secuential;
+            }
             //get employee
             $employee = Employee::where('code', '=', $request->employee_code)->first();
             $employee_id = null;
@@ -202,7 +213,7 @@ class VisitorController extends Controller
             ], [
                 'name' => $request->name,
                 'surname' => $request->surname,
-                'legal_id' => $request->legal_id,
+                'legal_id' => $legal_id,
                 'email' => $request->email,
                 'gender' => $request->gender,
                 'phone' => $request->phone,

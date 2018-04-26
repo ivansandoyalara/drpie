@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchQuestions } from '../../../actions/questions'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
+import { toggleExitModal } from '../../../actions/questions'
 import { reset } from 'redux-form'
 import { fetchVisitor, resetVisitorStatus } from '../../../actions/visitor'
 import { queueVisitor, resetQueueSyncStatus, syncVisitors } from '../../../actions/queuedvisitors'
@@ -74,8 +75,17 @@ class QuestionsScreen extends Component {
             this.props.dispatch(queueVisitor(values))
     }
 
-    redirectToConfirmation = () => (
+    openExitModal = () => (
+        this.props.dispatch(toggleExitModal(true))
+    )
+
+    redirectToConfirmation = () => {
+        this.closeExitModal()
         this.props.navigation.navigate('Confirmation')
+    }
+
+    closeExitModal = () => (
+        this.props.dispatch(toggleExitModal(false))
     )
 
     render() {
@@ -85,7 +95,11 @@ class QuestionsScreen extends Component {
             <VisitForm 
                 questions={this.props.questions}
                 onSubmit={this.submitForm}
+                openExitModal={this.openExitModal}
                 redirectToConfirmation={this.redirectToConfirmation}
+                exitmodal={this.props.exitmodal}
+                closeExitModal={this.closeExitModal}
+                cf={this.props.cf}
             />
         )
     }
@@ -96,6 +110,8 @@ function mapStateToProps(state, props) {
     return {
         questions: state.questions.items,
         loading: state.questions.loading,
+        exitmodal: state.questions.exitmodal,
+        cf: state.questions.cf,
         loadingVisitor: state.visitor.loading,
         status: state.visitor.status,
         queueStatus: state.queuedvisitors.queueStatus,

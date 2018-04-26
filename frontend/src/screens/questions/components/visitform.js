@@ -9,7 +9,9 @@ import ButtonDP from '../../../ui/buttondp'
 import appStyles from '../../../styles/styles'
 import FootPrint from './footprint'
 import Gender from './gender'
+import Nationality from './nationality'
 import ecLegalId from '../../../eclegalid'
+import ExitConfirmation from './exitconfirmation'
 import {
     StyleSheet,
     View,
@@ -21,6 +23,13 @@ import {
 function VisitForm(props) {
     return (
         <ScrollView style={styles.white}>
+            <ExitConfirmation
+                openExitModal={props.openExitModal}
+                redirectToConfirmation={props.redirectToConfirmation}
+                closeExitModal={props.closeExitModal}
+                exitmodal={props.exitmodal}
+            />
+
             <View style={[styles.container, styles.paddingForm]}>
                 <View style={styles.fl1}>
                     <Image 
@@ -30,17 +39,40 @@ function VisitForm(props) {
                 </View>
                 <View style={styles.fl10}>
                     <View style={[styles.row, styles.marginFormRow]}>
-                        <View style={[styles.fl2, styles.formElem]}>
-                            <LabelDP label='Cédula'/>
-                        </View>
-                        <View style={[styles.fl3, styles.formElem]}>
-                            <Field 
-                                name={'legal_id'}
-                                component={InputDP}
-                                placeholder='Ej: 0934857394'
-                                keyboardType='default'
-                            />
-                        </View>
+                        {
+                            props.cf === false &&
+                            <View style={[styles.fl2, styles.formElem]}>
+                                <LabelDP label='Cédula'/>
+                            </View>
+                        }
+                        {
+                            props.cf === false &&
+                            <View style={[styles.fl3, styles.formElem]}>
+                                <Field 
+                                    name={'legal_id'}
+                                    component={InputDP}
+                                    placeholder='Ej: 0934857394'
+                                    keyboardType='default'
+                                />
+                            </View>
+                        }
+
+                        {
+                            props.cf === true &&
+                            <View style={[styles.fl2, styles.formElem]}>
+                                <LabelDP label='Nacionalidad'/>
+                            </View>
+                        }
+                        {
+                            props.cf === true &&
+                            <View style={[styles.fl3, styles.formElem]}>
+                                <Field 
+                                    name={'nationality'}
+                                    component={Nationality}
+                                />
+                            </View>
+                        }
+
                         <View style={[styles.fl2, styles.formElem]}>
                             <LabelDP label='Email'/>
                         </View>
@@ -168,7 +200,7 @@ function VisitForm(props) {
                         <View style={[styles.row, styles.formElem]}>
                             <View style={[styles.fl1, styles.marginButtonRight]}>
                                 <ButtonDP 
-                                    onPress={props.redirectToConfirmation}
+                                    onPress={props.openExitModal}
                                     title='MENU'
                                     buttonColor='blue'
                                 />
@@ -216,14 +248,22 @@ const validate = values => {
         errors.phone = 'Como mínimo 3 caracteres'
     }
 
-    if(!values.legal_id) {
-        errors.legal_id = 'Requerido'
-    } else if (values.legal_id.length < 10) {
-        errors.legal_id = 'Como mínimo 10 caracteres'
-    } else if (true) {
-        const ec_legal_id_validation = ecLegalId(values.legal_id)
-        if(ec_legal_id_validation.error)
-        errors.legal_id = 'Cédula inválida'
+    if(values.cf === false) {
+        if(!values.legal_id) {
+            errors.legal_id = 'Requerido'
+        } else if (values.legal_id.length < 10) {
+            errors.legal_id = 'Como mínimo 10 caracteres'
+        } else if (true) {
+            const ec_legal_id_validation = ecLegalId(values.legal_id)
+            if(ec_legal_id_validation.error)
+            errors.legal_id = 'Cédula inválida'
+        }
+    } else {
+        if(!values.nationality) {
+            errors.nationality = 'Requerido'
+        } else if (values.nationality != 1 && values.nationality != 2) {
+            errors.nationality = 'Requerido'
+        }
     }
 
     if(!values.email) {
@@ -256,6 +296,7 @@ VisitForm = connect(
     state => ({
         initialValues: {
             'branch_id': state.branches.selectedItem,
+            'cf': state.questions.cf,
         }
     })
 )(VisitForm)

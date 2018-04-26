@@ -20,11 +20,11 @@ class BranchScreen extends Component {
     }
 
     pressNextButton = () => {
-        console.log(`Redirecting to Questions view...`)
+        console.log(`Redirecting to Confirmation view...`)
         if(this.props.selectedBranch != 0) {
             // remove event listener
             NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
-            this.props.navigation.navigate('Questions')
+            this.props.navigation.navigate('Confirmation')
         }
     }
 

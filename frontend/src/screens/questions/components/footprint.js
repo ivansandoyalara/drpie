@@ -11,8 +11,7 @@ import {
 
 function FootPrint(props) {
     const { input, meta, ...inputProps } = props
-
-
+    const selected_value = input.value
     return (
         <View>
             <RadioGroup
@@ -24,7 +23,7 @@ function FootPrint(props) {
             >
                 <RadioButton value={0} style={styles.fl1}>
                     <Image
-                        style={{width:150, height: 150}}
+                        style={selected_value === 0 ? {width:150, height: 150, opacity: 1} : {width:150, height: 150, opacity: 0.5}}
                         source={require('../../../styles/images/cavo.png')}
                     />
                     <Text style={styles.radioText}>PIE CAVO</Text>
@@ -32,7 +31,7 @@ function FootPrint(props) {
 
                 <RadioButton value={1} style={styles.fl1}>
                     <Image
-                        style={{width:150, height: 150}}
+                        style={selected_value === 1 ? {width:150, height: 150, opacity: 1} : {width:150, height: 150, opacity: 0.5}}
                         source={require('../../../styles/images/medio.png')}
                     />
                     <Text style={styles.radioText}>PIE MEDIO</Text>
@@ -40,7 +39,7 @@ function FootPrint(props) {
 
                 <RadioButton value={2} style={styles.fl1}>
                     <Image
-                        style={{width:150, height: 150}}
+                        style={selected_value === 2 ? {width:150, height: 150, opacity: 1} : {width:150, height: 150, opacity: 0.5}}
                         source={require('../../../styles/images/plano.png')}
                     />
                     <Text style={styles.radioText}>PIE PLANO</Text>

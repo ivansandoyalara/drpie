@@ -172,6 +172,35 @@ const styles = {
         color: '#000000',
         fontSize: 16,
     },
+
+    modal: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    modalWrapper: {
+        backgroundColor: '#dbdbdb',
+        flex: 2,
+        height: 200,
+        padding: 8,
+        borderRadius: 10,
+        opacity: 0.9,
+    },
+
+    modalBody: {
+        backgroundColor: '#ffffff',
+        flex: 1,
+        height: 300,
+        borderRadius: 10,
+        padding: 30,
+    },
+
+    modalQuestion: {
+        color: '#000000',
+        textAlign: 'center',
+        fontSize: 20,
+    },
 }
 
 export default styles
