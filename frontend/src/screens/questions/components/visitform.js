@@ -5,7 +5,6 @@ import LabelDP from '../../../ui/labeldp'
 import InputDP from '../../../ui/inputdp'
 import PickerDP from '../../../ui/pickerdp'
 import CheckBoxGroupDP from '../../../ui/checkboxgroupdp'
-import ButtonDP from '../../../ui/buttondp'
 import appStyles from '../../../styles/styles'
 import FootPrint from './footprint'
 import Gender from './gender'
@@ -18,6 +17,7 @@ import {
     Text,
     ScrollView,
     Image,
+    TouchableOpacity,
 } from 'react-native'
 
 function VisitForm(props) {
@@ -199,18 +199,24 @@ function VisitForm(props) {
                     <View style={[styles.row, styles.marginFormRow, styles.buttonContainer]}>
                         <View style={[styles.row, styles.formElem]}>
                             <View style={[styles.fl1, styles.marginButtonRight]}>
-                                <ButtonDP 
-                                    onPress={props.openExitModal}
-                                    title='MENU'
-                                    buttonColor='blue'
-                                />
+                                <TouchableOpacity onPress={props.openExitModal}
+                                style={{alignItems: 'center'}}
+                                >
+                                    <Image
+                                    source={require('../../../styles/images/btn-menu.png')}
+                                    style={{width: 220, height: 60}}
+                                    />
+                                </TouchableOpacity>
                             </View>
                             <View style={[styles.fl1, styles.marginButtonLeft]}>
-                                <ButtonDP 
-                                    onPress={props.handleSubmit}
-                                    title='ENVIAR'
-                                    buttonColor='green'
-                                />
+                                <TouchableOpacity onPress={props.handleSubmit}
+                                style={{alignItems: 'center'}}
+                                >
+                                    <Image
+                                    source={require('../../../styles/images/btn-send.png')}
+                                    style={{width: 220, height: 60}}
+                                    />
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>

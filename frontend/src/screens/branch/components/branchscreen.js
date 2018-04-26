@@ -1,11 +1,11 @@
 import React from 'react'
-import ButtonDP from '../../../ui/buttondp'
 import appStyles from '../../../styles/styles'
 import {
     View,
     Text,
     Picker,
     Image,
+    TouchableOpacity,
     StyleSheet,
 } from 'react-native'
 
@@ -40,11 +40,14 @@ function BranchScreenLayout(props) {
                     }
                     </Picker>
 
-                    <ButtonDP 
-                        onPress={props.pressNextButton}
-                        title='ACEPTAR'
-                        buttonColor='green'
-                    />
+                    <TouchableOpacity onPress={props.pressNextButton}
+                    style={{alignItems: 'center'}}
+                    >
+                        <Image
+                        source={require('../../../styles/images/btn-continue.png')}
+                        style={{width: 220, height: 60}}
+                        />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.fl1}></View>
             </View>

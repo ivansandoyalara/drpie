@@ -1,5 +1,4 @@
 import React from 'react'
-import ButtonDP from '../../../ui/buttondp'
 import appStyles from '../../../styles/styles'
 import {
     View,
@@ -7,6 +6,7 @@ import {
     Image,
     TextInput,
     StyleSheet,
+    TouchableOpacity,
 } from 'react-native'
 
 function ReportLayout(props) {
@@ -29,18 +29,24 @@ function ReportLayout(props) {
                         />
                     </View>
                     <View style={styles.marginFormRow}>
-                        <ButtonDP 
-                            onPress={props.handleViewReport}
-                            title='VER REPORTE'
-                            buttonColor='green'
-                        />
+                        <TouchableOpacity onPress={props.handleViewReport}
+                        style={{alignItems: 'center'}}
+                        >
+                            <Image
+                            source={require('../../../styles/images/btn-view-report.png')}
+                            style={{width: 220, height: 60}}
+                            />
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.marginFormRow}>
-                        <ButtonDP 
-                            onPress={props.redirectToConfirmation}
-                            title='MENU'
-                            buttonColor='blue'
-                        />
+                        <TouchableOpacity onPress={props.redirectToConfirmation}
+                        style={{alignItems: 'center'}}
+                        >
+                            <Image
+                            source={require('../../../styles/images/btn-menu.png')}
+                            style={{width: 220, height: 60}}
+                            />
+                        </TouchableOpacity>
                     </View>
                     {
                         (props.employeeReport) &&

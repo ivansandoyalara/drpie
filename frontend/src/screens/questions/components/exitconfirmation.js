@@ -6,7 +6,8 @@ import {
     View,
     Modal,
     Text,
-    TouchableHighlight,
+    Image,
+    TouchableOpacity,
 } from 'react-native'
 
 function ExitConfirmation (props) {
@@ -25,26 +26,27 @@ function ExitConfirmation (props) {
                         </View>
                         <View style={styles.container}>
                             <View style={styles.fl3}>
-                                <ButtonDP 
-                                    onPress={props.closeExitModal}
-                                    title='NO'
-                                    buttonColor={'black'}
-                                />
+                                <TouchableOpacity onPress={props.closeExitModal}
+                                style={{alignItems: 'center'}}
+                                >
+                                    <Image
+                                    source={require('../../../styles/images/btn-no.png')}
+                                    style={{width: 220, height: 60}}
+                                    />
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.fl1}></View>
                             <View style={styles.fl3}>
-                                <ButtonDP 
-                                    onPress={props.redirectToConfirmation}
-                                    title='SI'
-                                    buttonColor={'green'}
-                                />
+                                <TouchableOpacity onPress={props.redirectToConfirmation}
+                                style={{alignItems: 'center'}}
+                                >
+                                    <Image
+                                    source={require('../../../styles/images/btn-yes.png')}
+                                    style={{width: 220, height: 60}}
+                                    />
+                                </TouchableOpacity>
                             </View>
                         </View>
-
-                        <TouchableHighlight
-                            onPress={() => {}}>
-                            <Text>Hide Modal</Text>
-                        </TouchableHighlight>
                     </View>
                 </View>
                 <View style={styles.fl1}></View>

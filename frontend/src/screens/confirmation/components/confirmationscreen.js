@@ -1,25 +1,25 @@
 import React from 'react'
-import ButtonDP from '../../../ui/buttondp'
 import appStyles from '../../../styles/styles'
 import {
     View,
     Text,
     Image,
     StyleSheet,
+    TouchableOpacity,
 } from 'react-native'
 
 function ConfirmationScreen(props) {
     return (
-        <View style={styles.container}>
-            <View style={[styles.half, styles.middleCentered, styles.red]}>
+        <View style={styles.fl1}>
+            <View style={[styles.fl1, styles.middleCentered, styles.red]}>
                 <Image 
                     source={require('../../../styles/images/logo.png')}
-                    style={styles.logoMain}
+                    style={styles.logoConfirmation}
                 />
             </View>
-            <View style={[styles.container, styles.white]}>
+            <View style={[styles.containerConfirmation, styles.white]}>
                 <View style={styles.fl1}></View>
-                <View style={styles.fl3}>
+                <View style={styles.fl4}>
                 {
                     (props.submitted) &&
                     <View style={styles.imageHolder}>
@@ -31,39 +31,54 @@ function ConfirmationScreen(props) {
                     </View>
                 }
 
-                    <View style={styles.marginFormRow}>
-                        <ButtonDP 
-                            onPress={props.redirectToBranches}
-                            title='SELECCIONAR PUNTO DE VENTA'
-                        />
-                    </View>
-
-                    <View style={styles.marginFormRow}>
-                        <ButtonDP 
-                            onPress={() => {props.redirectToQuestions(false)}}
-                            title='EVALUACION ADULTOS NACIONALES'
-                            buttonColor='green'
-                        />
-                    </View>
-
-                    <View style={styles.marginFormRow}>
-                        <ButtonDP 
-                            onPress={() => {props.redirectToQuestions(true)}}
-                            title='EVALUACION NIÑOS Y EXTRANJEROS'
-                            buttonColor='green'
-                        />
-                    </View>
-
-                    {
-                        props.isConnected &&
-                        <View style={styles.marginFormRow}>
-                            <ButtonDP 
-                                onPress={props.redirectToReport}
-                                title='REPORTE VENDEDORES'
-                                buttonColor='blue'
-                            />
+                    <View style={styles.buttonHolder}>
+                        <View style={styles.fl1}>
+                            <TouchableOpacity onPress={props.redirectToBranches}
+                            style={{alignItems: 'center'}}
+                            >
+                                <Image
+                                source={require('../../../styles/images/btn-branch.png')}
+                                style={{width: 151, height: 181}}
+                                />
+                            </TouchableOpacity>
                         </View>
-                    }
+
+                        <View style={styles.fl1}>
+                            <TouchableOpacity onPress={() => {props.redirectToQuestions(false)}}
+                            style={{alignItems: 'center'}}
+                            >
+                                <Image
+                                source={require('../../../styles/images/btn-adults.png')}
+                                style={{width: 151, height: 181}}
+                                />
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.fl1}>
+                            <TouchableOpacity onPress={() => {props.redirectToQuestions(true)}}
+                            style={{alignItems: 'center'}}
+                            >
+                                <Image
+                                source={require('../../../styles/images/btn-cf.png')}
+                                style={{width: 151, height: 181}}
+                                />
+                            </TouchableOpacity>
+                        </View>
+
+                        {
+                            props.isConnected &&
+                            <View style={styles.fl1}>
+                                <TouchableOpacity onPress={props.redirectToReport}
+                                style={{alignItems: 'center'}}
+                                >
+                                    <Image
+                                    source={require('../../../styles/images/btn-report.png')}
+                                    style={{width: 151, height: 181}}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        }
+                    </View>
                 </View>
                 <View style={styles.fl1}></View>
             </View>

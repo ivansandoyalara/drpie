@@ -151,11 +151,11 @@ const styles = {
     imageHolder: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 10,
         borderStyle: 'dashed',
         borderColor: '#000000',
         borderWidth: 7,
-        paddingTop: 10
+        paddingTop: 10,
+        marginTop: 20,
     },
 
     imageCentered: {
@@ -201,6 +201,22 @@ const styles = {
         textAlign: 'center',
         fontSize: 20,
     },
+
+    containerConfirmation: {
+        flex: 2,
+        flexDirection: 'row'
+    },
+
+    logoConfirmation: {
+        width: 250,
+        height: 250
+    },
+
+    buttonHolder: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 20
+    }
 }
 
 export default styles
