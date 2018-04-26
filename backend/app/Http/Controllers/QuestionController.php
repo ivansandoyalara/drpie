@@ -129,9 +129,31 @@ class QuestionController extends Controller
         $questions = Question::with('options')
                     ->select('id', 'question', 'type')
                     ->get();
+        
+        $questions_res = array();
+        foreach($questions as $question)
+        {
+            //preapare options
+            $options_res = array();
+            foreach($question->options as $option)
+            {
+                $new_options_item = array(
+                    "id" => $option->id,
+                    "value" => $option->value,
+                );
+                array_push($options_res, $new_options_item);
+            }
+            $new_item = array(
+                "id" => $question->id,
+                "question" => $question->question,
+                "type" => $question->type,
+                "options" => $options_res
+            );
+            array_push($questions_res, $new_item);
+        }
 
         return response()
-            ->json($questions)
+            ->json($questions_res)
             ->header('Access-Control-Allow-Origin', '*');
     }
 }

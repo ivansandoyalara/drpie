@@ -15,12 +15,12 @@ class BranchScreen extends Component {
     }
 
     onChangePicker = (itemValue, itemPosition) => {
-        console.log(`Branch id selected: ${itemValue}`)
+        //console.log(`Branch id selected: ${itemValue}`)
         this.props.dispatch(selectBranch(itemValue))
     }
 
     pressNextButton = () => {
-        console.log(`Redirecting to Confirmation view...`)
+        //console.log(`Redirecting to Confirmation view...`)
         if(this.props.selectedBranch != 0) {
             // remove event listener
             NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)

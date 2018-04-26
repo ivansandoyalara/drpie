@@ -1,6 +1,7 @@
 import connectionstatus from './connectionstatus'
 import branches from './branches'
 import questions from './questions'
+import auxquestions from './auxquestions'
 import visitor from './visitor'
 import report from './report'
 import queuedvisitors from './queuedvisitors'
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     connectionstatus,
     branches,
     questions,
+    auxquestions,
     visitor,
     report,
     queuedvisitors,

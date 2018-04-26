@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchQuestions } from '../../../actions/questions'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
-import { toggleExitModal } from '../../../actions/questions'
+import { toggleExitModal } from '../../../actions/auxquestions'
 import { reset } from 'redux-form'
 import { fetchVisitor, resetVisitorStatus } from '../../../actions/visitor'
 import { queueVisitor, resetQueueSyncStatus, syncVisitors } from '../../../actions/queuedvisitors'
@@ -80,6 +80,9 @@ class QuestionsScreen extends Component {
     )
 
     redirectToConfirmation = () => {
+        // remove event listener
+        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
+        this.props.dispatch(reset('visitForm')) // reseting form
         this.closeExitModal()
         this.props.navigation.navigate('Confirmation')
     }
@@ -110,13 +113,13 @@ function mapStateToProps(state, props) {
     return {
         questions: state.questions.items,
         loading: state.questions.loading,
-        exitmodal: state.questions.exitmodal,
-        cf: state.questions.cf,
+        exitmodal: state.auxquestions.exitmodal,
+        cf: state.auxquestions.cf,
         loadingVisitor: state.visitor.loading,
         status: state.visitor.status,
         queueStatus: state.queuedvisitors.queueStatus,
-        isConnected: state.connectionstatus.isConnected,
         queuedVisitors: state.queuedvisitors.visitors,
+        isConnected: state.connectionstatus.isConnected,
     }
 }
 

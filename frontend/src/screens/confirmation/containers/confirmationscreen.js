@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ConfirmationScreenLayout from '../components/confirmationscreen'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import { syncVisitors } from '../../../actions/queuedvisitors'
-import { setQuestionsFormType } from '../../../actions/questions'
+import { setQuestionsFormType } from '../../../actions/auxquestions'
 import { 
     NetInfo,
 } from 'react-native'
@@ -13,17 +13,22 @@ class ConfirmationScreen extends Component {
         title: 'Menú',
     }
 
-    redirectToBranches = () => (
+    redirectToBranches = () => {
+        // remove event listener
+        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
         this.props.navigation.navigate('Branch')
-    )
+    }
 
     redirectToQuestions = cf => {
+        // remove event listener
+        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
         this.props.dispatch(setQuestionsFormType(cf))
         this.props.navigation.navigate('Questions')
     }
 
     redirectToReport = () => {
-        console.log('redirecting to report ...')
+        // remove event listener
+        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
         this.props.navigation.navigate('Report')
     }
 
