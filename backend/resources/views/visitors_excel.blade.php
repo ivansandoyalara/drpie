@@ -18,7 +18,11 @@
                 <td>{{ $visitor->name.' '.$visitor->surname }}</td>
                 <td>{{ $visitor->email }}</td>
                 <td>{{ $visitor->branch->name }}</td>
-                <td>{{ $visitor->employee->name }}</td>
+                @if(count($visitor->employee) > 0)
+                    <td>{{ $visitor->employee->name }}</td>
+                @else
+                    <td>N/A</td>
+                @endif
             </tr>
         @endforeach
     </tbody>
