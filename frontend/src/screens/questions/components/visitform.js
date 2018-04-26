@@ -259,9 +259,9 @@ const validate = values => {
             errors.legal_id = 'Cédula inválida'
         }
     } else {
-        if(!values.nationality) {
+        if(!values.nationality && values.nationality !== 0) {
             errors.nationality = 'Requerido'
-        } else if (values.nationality != 1 && values.nationality != 2) {
+        } else if (values.nationality != 0 && values.nationality != 1) {
             errors.nationality = 'Requerido'
         }
     }
@@ -272,13 +272,13 @@ const validate = values => {
         errors.email = 'Dirección email inválida'
     }
 
-    if(!values.gender) {
+    if(!values.gender && values.gender !== 0) {
         errors.gender = 'Requerido'
-    } else if (values.gender != 1 && values.gender != 2) {
+    } else if (values.gender != 0 && values.gender != 1) {
         errors.gender = 'Requerido'
     }
 
-    if(!values.footprint) {
+    if(!values.footprint && values.footprint !== 0) {
         errors.footprint = 'Requerido'
     } else if (values.footprint != 0 && values.footprint != 1 && values.footprint != 2) {
         errors.footprint = 'Requerido'

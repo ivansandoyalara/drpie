@@ -196,7 +196,7 @@ class VisitorController extends Controller
             if($cf)
             {
                 $secuential = Visitor::count() + 1;
-                if($request->nationality == 1)
+                if($request->nationality == 0)
                     $legal_id = "N".$secuential;
                 else
                     $legal_id = "E".$secuential;
