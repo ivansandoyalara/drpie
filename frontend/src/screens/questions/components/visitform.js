@@ -53,6 +53,7 @@ function VisitForm(props) {
                                     component={InputDP}
                                     placeholder='Ej: 0934857394'
                                     keyboardType='default'
+                                    autoCapitalize='none'
                                 />
                             </View>
                         }
@@ -82,6 +83,7 @@ function VisitForm(props) {
                                 component={InputDP}
                                 placeholder='Ej: nombre@email.com'
                                 keyboardType='email-address'
+                                autoCapitalize='none'
                             />
                         </View>
                     </View>
@@ -95,6 +97,7 @@ function VisitForm(props) {
                                 component={InputDP}
                                 placeholder='Ej: Juan'
                                 keyboardType='default'
+                                autoCapitalize='words'
                             />
                         </View>
                         <View style={[styles.fl2, styles.formElem]}>
@@ -106,6 +109,7 @@ function VisitForm(props) {
                                 component={InputDP}
                                 placeholder='Ej: Perez'
                                 keyboardType='default'
+                                autoCapitalize='words'
                             />
                         </View>
                     </View>
@@ -128,6 +132,7 @@ function VisitForm(props) {
                                 component={InputDP}
                                 placeholder='Ej: 0983452714'
                                 keyboardType='phone-pad'
+                                autoCapitalize='none'
                             />
                         </View>
                     </View>
@@ -152,6 +157,7 @@ function VisitForm(props) {
                                 component={InputDP}
                                 placeholder='Ej: G001'
                                 keyboardType='numeric'
+                                autoCapitalize='none'
                             />
                         </View>
                     </View>
@@ -189,6 +195,7 @@ function VisitForm(props) {
                                                 component={InputDP}
                                                 placeholder=''
                                                 keyboardType='default'
+                                                autoCapitalize='sentences'
                                             />
                                         </View>
                                     }
@@ -295,6 +302,7 @@ const validate = values => {
 
 VisitForm = reduxForm({
     form: 'visitForm',
+    forceUnregisterOnUnmount: true,
     validate,
 })(VisitForm)
 
@@ -302,7 +310,7 @@ VisitForm = connect(
     state => ({
         initialValues: {
             'branch_id': state.branches.selectedItem,
-            'cf': state.questions.cf,
+            'cf': state.auxquestions.cf,
         }
     })
 )(VisitForm)

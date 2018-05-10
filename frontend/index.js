@@ -14,7 +14,7 @@ import rootReducer from './src/reducers/index'
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['form', 'connectionstatus', 'report', 'auxquestions', 'visitor'], // this store attributes will not be persisted
+    whitelist: ['branches', 'questions', 'queuedvisitors'] // only these ones will be persisted
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

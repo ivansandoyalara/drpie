@@ -22,6 +22,7 @@ function InputDP(props) {
                 placeholder={props.placeholder}
                 returnKeyType='next'
                 keyboardType={props.keyboardType}
+                autoCapitalize={props.autoCapitalize}
             />
             {
                 meta.touched && meta.error &&

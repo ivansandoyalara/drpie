@@ -106,12 +106,23 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-9">
                         <button type="submit" class="btn btn-primary">ACTUALIZAR PREGUNTA @if($question->type != '3') Y OPCIONES @endif</button>
-                        <button type="submit" class="btn btn-default">ELIMINAR PREGUNTA @if($question->type != '3') Y OPCIONES @endif</button>
+                        <button type="button" onclick="confirmDelete('{{ $question->id }}')" class="btn btn-default">ELIMINAR PREGUNTA @if($question->type != '3') Y OPCIONES @endif</button>
                     </div>
                 </div>
             </form>
+        <form action="{{ URL::to('questions/'.$question->id) }}" method="POST" id="delq{{ $question->id }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+        </form>
         </div>
         @endforeach
     </div>
 </div>
+<script>
+    function confirmDelete(question_id) {
+        if(confirm("Está seguro(a) de eliminar la pregunta?")) {
+            $('#delq'+question_id).submit()
+        }
+    }
+</script>
 @endsection

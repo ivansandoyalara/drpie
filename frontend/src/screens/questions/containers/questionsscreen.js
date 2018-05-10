@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchQuestions } from '../../../actions/questions'
 import { changeConnectionStatus } from '../../../actions/connectionstatus'
 import { toggleExitModal } from '../../../actions/auxquestions'
-import { reset } from 'redux-form'
+import { reset, destroy } from 'redux-form'
 import { fetchVisitor, resetVisitorStatus } from '../../../actions/visitor'
 import { queueVisitor, resetQueueSyncStatus, syncVisitors } from '../../../actions/queuedvisitors'
 import VisitForm from '../components/visitform'
@@ -57,6 +57,7 @@ class QuestionsScreen extends Component {
             this.props.dispatch(resetVisitorStatus()) // reseting visitor status
             this.props.dispatch(resetQueueSyncStatus()) // reseting visitors queue and sync status
             this.props.dispatch(reset('visitForm')) // reseting form
+            this.props.dispatch(destroy('visitForm')) // destroy form
             // remove event listener
             NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
             // navigate to confirmation screen
@@ -83,6 +84,7 @@ class QuestionsScreen extends Component {
         // remove event listener
         NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
         this.props.dispatch(reset('visitForm')) // reseting form
+        this.props.dispatch(destroy('visitForm')) // destroy form
         this.closeExitModal()
         this.props.navigation.navigate('Confirmation')
     }

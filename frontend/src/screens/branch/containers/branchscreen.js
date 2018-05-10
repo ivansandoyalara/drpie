@@ -69,7 +69,7 @@ class BranchScreen extends Component {
 }
 
 function mapStateToProps(state, props) {
-    console.log(`[State from Branch]: ${JSON.stringify(state)}`)
+    //console.log(`[State from Branch]: ${JSON.stringify(state)}`)
     return {
         branches: state.branches.items,
         selectedBranch: state.branches.selectedItem,

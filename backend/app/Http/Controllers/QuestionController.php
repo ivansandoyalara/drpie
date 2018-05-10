@@ -121,7 +121,16 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::transaction(function() use($id) {
+            $question = Question::findOrFail($id);
+            // first delete question options
+            $question->options()->delete();
+
+            //then delete question
+            $question->delete();
+        });
+
+        return redirect('questions')->with('ok', 'ok');
     }
 
     public function indexAPI()
