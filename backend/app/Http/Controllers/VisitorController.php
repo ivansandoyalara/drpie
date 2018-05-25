@@ -276,4 +276,33 @@ class VisitorController extends Controller
                 ->json(array('status' => 'STORE_VISITOR_OK'))
                 ->header('Access-Control-Allow-Origin', '*');
     }
+
+    public function confirm($legal_id)
+    {
+        $visitor = Visitor::where('legal_id', '=', $legal_id)
+                    ->first();
+        
+        if(count($visitor) > 0)
+        {
+            DB::transaction(function() use($visitor) {
+                $visitor->status = 1;
+                $visitor->save();
+            });
+
+            if($visitor->footprint == '0')
+            {
+                return redirect(asset('/evaluacion/pie-plano.pdf'));
+            }
+            if($visitor->footprint == '1')
+            {
+                return redirect(asset('/evaluacion/pie-medio.pdf'));
+            }
+            if($visitor->footprint == '2')
+            {
+                return redirect(asset('/evaluacion/pie-cavo.pdf'));
+            }
+        }
+        else
+            return redirect('http://www.doctor-pie.com/');
+    }
 }

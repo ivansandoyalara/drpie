@@ -14,6 +14,7 @@
 Route::get('/', 'BackendController@login');
 Route::post('login', 'BackendController@processLogin');
 Route::get('logout', 'BackendController@logout');
+Route::get('evaluacion-de-pisada/{legal_id}', 'VisitorController@confirm');
 
 Route::middleware(['customAuth'])->group(function () {
 
