@@ -9,7 +9,7 @@
         <p><b>Vendedor:</b> {{ $visitor->employee->name }}</p>
     @endif
     <br>
-    <p>Por favor ingresa al siguiente <b><a href="#">enlace</a></b> para acceder a tu evaluación de pisada,
+    <p>Por favor ingresa al siguiente <b><a href="{{ URL::to('evaluacion-de-pisada/'.$visitor->legal_id) }}">enlace</a></b> para acceder a tu evaluación de pisada,
     también podrás encontrar las recomendaciones que te podemos brindar como especialistas en el cuidado de tus pies.</p>
     <br>
     <p>Atentamente,</p>
