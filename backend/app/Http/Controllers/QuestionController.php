@@ -101,11 +101,14 @@ class QuestionController extends Controller
                 //update options
                 $question->options()->delete();
                 $options = $request->options;
-                foreach($options as $key => $option_value)
+                if(count($options) > 0)
                 {
-                    $option = new Option();
-                    $option->value = $option_value;
-                    $question->options()->save($option);
+                    foreach($options as $key => $option_value)
+                    {
+                        $option = new Option();
+                        $option->value = $option_value;
+                        $question->options()->save($option);
+                    }
                 }
             }
         });

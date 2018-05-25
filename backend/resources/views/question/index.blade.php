@@ -82,19 +82,17 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $options_counter = 1; ?>
                                     @foreach($question->options as $option)
-                                    <tr>
+                                    <tr id="t{{ $question->id }}o{{ $loop->index }}">
                                         <td>
                                         <input type="text" class="form-control" name="options[]" placeholder="Opción" value="{{ $option->value }}" onkeypress="return enterKeyExistingOption(event)">
                                         </td>
                                         <td>
-                                            <a onclick="removeOption('{{ $question->id }}','{{ $options_counter }}');">
+                                            <a onclick="removeOption('{{ $question->id }}','{{ $loop->index }}');">
                                                 <span class="now-ui-icons ui-1_simple-remove"></span>
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $options_counter ++; ?>
                                     @endforeach
                                 </tbody>
                             </table>

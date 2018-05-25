@@ -178,7 +178,7 @@
         </a>
         `;
         //build table rows
-        var new_row = $("<tr></tr>");
+        var new_row = $("<tr id='t"+table_id+"o"+tbody_size+"'></tr>");
         new_row.append("<td>"+option_input+"</td>");
         new_row.append("<td>"+add_action+"</td>");
         table.find('tbody').append(new_row);
@@ -209,7 +209,8 @@
     }
 
     function removeOption(table_id, option_id) {
-
+        $("#t"+table_id+"o"+option_id).remove();
+        return true;
     }
 
     function toggleOptionsPanel(element, table_id) {
