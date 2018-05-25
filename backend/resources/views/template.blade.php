@@ -36,6 +36,7 @@
                             <p>VISITANTES</p>
                         </a>
                     </li>
+                    @if(\Auth::user()->role == '1')
                     <li @if(Request::path() == 'branches') class="active" @endif>
                         <a href="{{ URL::to('branches') }}">
                             <i class="now-ui-icons shopping_shop"></i>
@@ -60,6 +61,7 @@
                             <p>ADMINISTRADORES</p>
                         </a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{ URL::to('logout') }}">
                             <i class="now-ui-icons objects_spaceship"></i>

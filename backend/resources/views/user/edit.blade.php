@@ -45,6 +45,15 @@
                         <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirmar contraseña">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="role" class="col-sm-3 col-form-label">Rol</label>
+                    <div class="col-sm-8">
+                        <select name="role" id="role" class="form-control" required>
+                            <option value="1" @if($user->role == '1') selected @endif>Administrativo</option>
+                            <option value="2" @if($user->role == '2') selected @endif>Punto de venta</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary">GUARDAR</button>
