@@ -20,7 +20,7 @@
             <tr>
                 <td><span>Género</span></td>
                 <td>
-                    @if($visitor->gender == '1')
+                    @if($visitor->gender == '0')
                     Masculino
                     @else
                     Femenino
