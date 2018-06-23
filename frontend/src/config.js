@@ -1,5 +1,5 @@
-//const host = `http://159.89.233.253/drpie/backend/public`
-const host = `http://f92d6248.ngrok.io`
+const host = `http://159.89.233.253/drpie/backend/public`
+//const host = `http://f92d6248.ngrok.io`
 
 export const config = {
     host,

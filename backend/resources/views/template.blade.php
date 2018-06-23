@@ -245,7 +245,17 @@
         var form = $("#visitors_form");
         var queryString = form.serialize();
         var url = '{{ URL::to('visitors-excel') }}?'+queryString;
-        window.location = url;
+        form.attr('action', url);
+        form.submit();
+        
+        return true;
+    }
+
+    function search() {
+        var form = $("#visitors_form");
+        var url = '{{ URL::to('visitors') }}';
+        form.attr('action', url);
+        form.submit();
         
         return true;
     }

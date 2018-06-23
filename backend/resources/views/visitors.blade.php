@@ -36,7 +36,7 @@
                         <input type="text" class="form-control datepicker" name="until" id="until" placeholder="Fecha hasta" value="{{ $until }}" data-provide="datepicker" readonly>
                     </div>
                     <div class="col-sm-3">
-                        <button type="submit" class="btn btn-default">BUSCAR</button>
+                        <button type="button" class="btn btn-default" onclick="search();">BUSCAR</button>
                         <button type="button" class="btn btn-success" onclick="generateExcel();"><span class="now-ui-icons arrows-1_cloud-download-93"></span> EXCEL</button>
                     </div>
                 </div>
