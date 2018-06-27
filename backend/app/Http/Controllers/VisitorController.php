@@ -291,7 +291,7 @@ class VisitorController extends Controller
 
             if($visitor->footprint == '0')
             {
-                return redirect(asset('/evaluacion/pie-plano.pdf'));
+                return redirect(asset('/evaluacion/pie-cavo.pdf'));
             }
             if($visitor->footprint == '1')
             {
@@ -299,7 +299,7 @@ class VisitorController extends Controller
             }
             if($visitor->footprint == '2')
             {
-                return redirect(asset('/evaluacion/pie-cavo.pdf'));
+                return redirect(asset('/evaluacion/pie-plano.pdf'));
             }
         }
         else
