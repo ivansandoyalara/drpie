@@ -5,6 +5,7 @@
     <thead>
         <tr>
             <th>Fecha</th>
+            <th>Cédula</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
@@ -17,6 +18,7 @@
         @foreach($visitors as $visitor)
             <tr>
                 <td>{{ substr($visitor->created_at, 0, 10) }}</td>
+                <td>{{ $visitor->legal_id }}</td>
                 <td>{{ $visitor->name }}</td>
                 <td>{{ $visitor->surname }}</td>
                 <td>{{ $visitor->email }}</td>
