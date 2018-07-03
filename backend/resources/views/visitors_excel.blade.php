@@ -9,6 +9,7 @@
             <th>Apellido</th>
             <th>Email</th>
             <th>Pto. Venta</th>
+            <th>Cod. Vendedor</th>
             <th>Vendedor</th>
         </tr>
     </thead>
@@ -21,8 +22,10 @@
                 <td>{{ $visitor->email }}</td>
                 <td>{{ $visitor->branch->name }}</td>
                 @if(count($visitor->employee) > 0)
+                    <td>{{ $visitor->employee->code }}</td>
                     <td>{{ $visitor->employee->name }}</td>
                 @else
+                    <td>N/A</td>
                     <td>N/A</td>
                 @endif
             </tr>
