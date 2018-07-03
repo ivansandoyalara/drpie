@@ -6,6 +6,7 @@
         <tr>
             <th>Fecha</th>
             <th>Nombre</th>
+            <th>Apellido</th>
             <th>Email</th>
             <th>Pto. Venta</th>
             <th>Vendedor</th>
@@ -15,7 +16,8 @@
         @foreach($visitors as $visitor)
             <tr>
                 <td>{{ substr($visitor->created_at, 0, 10) }}</td>
-                <td>{{ $visitor->name.' '.$visitor->surname }}</td>
+                <td>{{ $visitor->name }}</td>
+                <td>{{ $visitor->surname }}</td>
                 <td>{{ $visitor->email }}</td>
                 <td>{{ $visitor->branch->name }}</td>
                 @if(count($visitor->employee) > 0)

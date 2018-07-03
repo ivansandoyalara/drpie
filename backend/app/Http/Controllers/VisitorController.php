@@ -36,11 +36,13 @@ class VisitorController extends Controller
         $branch_id = $request->input('branch_id', '');
         if($branch_id == "")
             $branch_id = "%%";
+        $status = $request->input('status', '');
 
         $visitors = Visitor::select('visitors.id', 'visitors.name', 'visitors.surname',
                             'visitors.email', 'visitors.created_at', 'visitors.branch_id')
                     ->whereBetween('visitors.created_at', [$since_query.' 00:00:00', $until_query.' 23:59:59'])
                     ->where('visitors.branch_id', 'LIKE', $branch_id)
+                    ->where('visitors.status', 'LIKE', '%'.$status.'%')
                     ->where(function($query) use($name_email) {
                         $query->where('visitors.name', 'LIKE', '%'.$name_email.'%')
                         ->orWhere('visitors.surname', 'LIKE', '%'.$name_email.'%')
@@ -60,7 +62,8 @@ class VisitorController extends Controller
             'until',
             'branch_id',
             'visitors',
-            'branches'
+            'branches',
+            'status'
         ));
     }
 
@@ -78,11 +81,13 @@ class VisitorController extends Controller
         $branch_id = $request->input('branch_id', '');
         if($branch_id == "")
             $branch_id = "%%";
+        $status = $request->input('status', '');
 
         $visitors = Visitor::select('visitors.id', 'visitors.name', 'visitors.surname',
                             'visitors.email', 'visitors.created_at', 'visitors.branch_id', 'visitors.employee_id')
                     ->whereBetween('visitors.created_at', [$since_query.' 00:00:00', $until_query.' 23:59:59'])
                     ->where('visitors.branch_id', 'LIKE', $branch_id)
+                    ->where('visitors.status', 'LIKE', '%'.$status.'%')
                     ->where(function($query) use($name_email) {
                         $query->where('visitors.name', 'LIKE', '%'.$name_email.'%')
                         ->orWhere('visitors.surname', 'LIKE', '%'.$name_email.'%')

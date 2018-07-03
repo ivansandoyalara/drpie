@@ -35,6 +35,15 @@
                     <div class="col-sm-3">
                         <input type="text" class="form-control datepicker" name="until" id="until" placeholder="Fecha hasta" value="{{ $until }}" data-provide="datepicker" readonly>
                     </div>
+                </div>
+                <div class="form-group row">
+                    <label for="since" class="col-sm-2 col-form-label">Email confirmado</label>
+                    <div class="col-sm-3">
+                        <select name="status" id="status" class="form-control">
+                            <option value="1" @if($status == '1') selected @endif>Solo confirmados</option>
+                            <option value="" @if($status == '') selected @endif>- TODOS -</option>
+                        </select>
+                    </div>
                     <div class="col-sm-3">
                         <button type="button" class="btn btn-default" onclick="search();">BUSCAR</button>
                         <button type="button" class="btn btn-success" onclick="generateExcel();"><span class="now-ui-icons arrows-1_cloud-download-93"></span> EXCEL</button>
