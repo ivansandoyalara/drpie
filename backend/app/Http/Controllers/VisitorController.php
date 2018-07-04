@@ -84,7 +84,8 @@ class VisitorController extends Controller
         $status = $request->input('status', '');
 
         $visitors = Visitor::select('visitors.id', 'visitors.name', 'visitors.surname',
-                            'visitors.email', 'visitors.created_at', 'visitors.branch_id', 'visitors.employee_id', 'visitors.legal_id')
+                            'visitors.email', 'visitors.created_at', 'visitors.branch_id', 'visitors.employee_id', 'visitors.legal_id',
+                            'visitors.phone', 'visitors.footprint')
                     ->whereBetween('visitors.created_at', [$since_query.' 00:00:00', $until_query.' 23:59:59'])
                     ->where('visitors.branch_id', 'LIKE', $branch_id)
                     ->where('visitors.status', 'LIKE', '%'.$status.'%')
