@@ -46,7 +46,9 @@
                     </div>
                     <div class="col-sm-3">
                         <button type="button" class="btn btn-default" onclick="search();">BUSCAR</button>
+                        @if(\Auth::user()->role == '1')
                         <button type="button" class="btn btn-success" onclick="generateExcel();"><span class="now-ui-icons arrows-1_cloud-download-93"></span> EXCEL</button>
+                        @endif
                     </div>
                 </div>
             </form>
